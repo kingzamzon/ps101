@@ -37,7 +37,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Create a random username for user based on email.
+     * 
+     * @param string $email
+     * @return string $username
+     */
+
     public static function username($email){
-        return $email.split('@')[0];
+        $random_letters = strtolower(str_random(7));
+        $extracted_email_address = explode('@', $email)[0];
+        $username = $extracted_email_address.$random_letters;
+        return $username;
     }
 }

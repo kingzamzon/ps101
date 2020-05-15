@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/tt/{email}', function ($email) {
+    // $random_letters = strtolower(str_random(7));
+    // $extracted_email_address = explode('@', $email)[0];
+    // $username = $extracted_email_address.$random_letters;
+    // return $username;
+});
