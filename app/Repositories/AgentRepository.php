@@ -24,7 +24,7 @@ class AgentRepository implements AgentRepositoryInterface
         try{
             return $this->model->findOrFail($id);
         }catch(Exception $e){
-            return $e;
+            throw new Exception($e);
         }
     }
 
@@ -38,7 +38,36 @@ class AgentRepository implements AgentRepositoryInterface
         try{
             return $this->model->create($data);
         }catch(Exception $e){
-            return $e;
+            throw new Exception($e);
+        }
+    }
+
+        /**
+     * Update Agent
+     * 
+     * @param array $data
+     */
+    public function updateAgent(array $data)
+    {
+        try {
+            return $this->model->update($data);
+        }catch(Exception $e) {
+            throw new Exception($e);
+        }
+    }
+
+
+    /**
+     * Delete Agent
+     * 
+     * @param array
+     */
+    public function deleteAgent(int $id)
+    {
+        try {
+            return $this->model->delete();
+        }catch(Exception $e) {
+            throw new Exception($e);
         }
     }
 }

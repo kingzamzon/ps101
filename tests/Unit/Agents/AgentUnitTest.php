@@ -11,7 +11,43 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AgentUnitTest extends TestCase
 {
     use WithFaker;
+
+    /**
+     * It can delete agent
+     * 
+     * @return void
+     */
+    public function test_it_can_delete_the_agent()
+    {
+        $agent = factory(Agent::class)->create();
+
+        $agentRepo = new AgentRepository($agent);
+        $delete = $agentRepo->deleteAgent($agent->id);
+
+        $this->assertTrue($delete);
+    }
     
+    /**
+     * admin can delete agent
+     * 
+     * @return void
+     */
+    public function test_it_can_update_the_agent()
+    {
+        $agent = factory(Agent::class)->create();
+
+        $data = [
+            'first_name' => $this->faker->name,
+            'last_name' => $this->faker->name
+        ];
+
+        $agentRepo = new AgentRepository($agent);
+        $update = $agentRepo->updateAgent($data);
+
+        $this->assertTrue($update);
+        $this->assertEquals($data['first_name'], $agent->first_name);
+    }
+
     /**
      * It can show the agent 
      * @return void
