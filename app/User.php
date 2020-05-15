@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Agent;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,4 +51,13 @@ class User extends Authenticatable
         $username = $extracted_email_address.$random_letters;
         return $username;
     }
+
+    /**
+     * Relationships
+     */
+
+    public function agent()
+    {
+        return $this->hasMany(Agent::class, 'created_by', 'id');
+    } 
 }
