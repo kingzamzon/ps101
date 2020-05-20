@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  Chart of Office
+  Home
 @endsection
 
 @section('main')

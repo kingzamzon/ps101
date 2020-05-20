@@ -1,4 +1,4 @@
-<script src="{{ asset('vendors/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('vendors/js/jquery.min.js') }}"></script>
   <script src="{{ asset('vendors/js/popper.min.js') }}"></script>
   <script src="{{ asset('vendors/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('vendors/js/pace.min.js') }}"></script>
@@ -23,4 +23,3 @@
 
   <!-- Custom scripts required by this view -->
   <script src="{{ asset('js/views/main.js') }}"></script>
-  {{-- <script src="{{ asset('js/views/advanced-forms.js') }}"></script> --}}
