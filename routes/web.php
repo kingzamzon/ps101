@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.template');
+    return view('dashboard.home');
 });
 
 Auth::routes();
@@ -25,3 +25,5 @@ Route::get('/tt/{email}', function ($email) {
     // $username = $extracted_email_address.$random_letters;
     // return $username;
 });
+
+// Route /agents/name/calendar show agent calendar 
