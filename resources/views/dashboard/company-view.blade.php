@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  Chart of Office
+{{$company->name}}
 @endsection
 
 @section('main')
@@ -9,7 +9,7 @@
 
   <!-- Breadcrumb -->
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><i class="fa fa-building"></i> Company Name</li>
+    <li class="breadcrumb-item"><i class="fa fa-building"></i> {{$company->name}}</li>
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -27,72 +27,78 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              <strong>Company Name</strong>
+              <strong>{{$company->name}}</strong>
             </div>
             <div class="card-body">
               <div class="row">
                 <div class="col-md-3"> <b>Name</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company->name}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Access</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company->access}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Address</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">
+                  {{$address->street_address}}
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Phone</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">
+                  {{$phone->number}} | {{$phone->home}}
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Tags</b></div>
-                <div class="col-md-9">sam@gmail.com</div>
+                <div class="col-md-9">{{$company->tags}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Description</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">
+                  {{$company_info->description}}
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Website</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">
+                  {{$company_info->website}}
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Twitter Handle</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">
+                  {{$company_info->twitter_handle}}
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Industry</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company_info->industry}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Num of Employee</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company_info->num_of_employee}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Stock Symbol</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company_info->stock_symbol}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Average Revenue</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company_info->average_revenue}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Priority</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company_info->priority}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Identifier</b></div>
-                <div class="col-md-9">ssds</div>
-              </div>
-              <div class="row">
-                <div class="col-md-3"> <b>VAT Number</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company_info->identifier}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Category</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$company_info->category}}</div>
               </div>
             </div>
           </div>

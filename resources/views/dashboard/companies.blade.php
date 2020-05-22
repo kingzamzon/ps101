@@ -13,7 +13,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <a class="btn" href="./company-new.html"><i class="fa fa-edit"></i> &nbsp;New</a>
+        <a class="btn" href="{{ route('company.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
       </div>
     </li>
   </ol>
@@ -25,7 +25,7 @@
         <div class="card-header">
           Companies
           <div style="float:right;" lass="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn btn-primary btn-sm" href="./company-new.html"><i class="fa fa-edit"></i> &nbsp;New</a>
+            <a class="btn btn-primary btn-sm" href="{{ route('company.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
           </div>
         </div>
         <div class="card-body">
@@ -38,11 +38,13 @@
               </tr>
             </thead>
             <tbody>
+              @if($companies->count() > 0)
+                @foreach($companies as $company)
               <tr>
-                <td>John Joshua</td>
-                <td>2012/01/01</td>
-                <td>
-                  <a class="btn btn-success" href="company-view.html">
+                <td>{{$company->name}}</td>
+                <td>{{$company->created_at}}</td>
+                <td>  
+                  <a class="btn btn-success" href="{{ route('company.show', ['agent' => $company->id]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
                   <a class="btn btn-info" href="#">
@@ -53,9 +55,13 @@
                   </a>
                 </td>
               </tr>
-
+                @endforeach
+              @endif
             </tbody>
           </table>
+          <div>
+            {{ $companies->links() }}
+          </div>
         </div>
       </div>
     </div>

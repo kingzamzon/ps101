@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $agents = Agent::orderBy('id')->paginate(1);
+        $agents = Agent::orderBy('id','desc')->paginate(1);
         
         return view('dashboard.home', compact('agents'));
     }
