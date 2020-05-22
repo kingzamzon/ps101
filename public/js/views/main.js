@@ -1,10 +1,6 @@
-$(function(){
+$(function () {
   'use strict';
 
-  toastr.info('Welcome!', 'Agent Portal', {
-    closeButton: true,
-    progressBar: true,
-  });
 
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
@@ -19,18 +15,18 @@ $(function(){
   });
 
   //convert Hex to RGBA
-  function convertHex(hex,opacity){
-    hex = hex.replace('#','');
-    var r = parseInt(hex.substring(0,2), 16);
-    var g = parseInt(hex.substring(2,4), 16);
-    var b = parseInt(hex.substring(4,6), 16);
+  function convertHex(hex, opacity) {
+    hex = hex.replace('#', '');
+    var r = parseInt(hex.substring(0, 2), 16);
+    var g = parseInt(hex.substring(2, 4), 16);
+    var b = parseInt(hex.substring(4, 6), 16);
 
-    var result = 'rgba('+r+','+g+','+b+','+opacity/100+')';
+    var result = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
     return result;
   }
 
   //Cards with Charts
-  var labels = ['January','February','March','April','May','June','July'];
+  var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   var data = {
     labels: labels,
     datasets: [
@@ -185,8 +181,8 @@ $(function(){
   });
 
   //Random Numbers
-  function random(min,max) {
-    return Math.floor(Math.random()*(max-min+1)+min);
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   var elements = 16;
@@ -195,7 +191,7 @@ $(function(){
 
   for (var i = 2000; i <= 2000 + elements; i++) {
     labels.push(i);
-    data.push(random(40,100));
+    data.push(random(40, 100));
   }
 
   var options = {
@@ -238,8 +234,8 @@ $(function(){
   var data3 = [];
 
   for (var i = 0; i <= elements; i++) {
-    data1.push(random(50,200));
-    data2.push(random(80,100));
+    data1.push(random(50, 200));
+    data2.push(random(80, 100));
     data3.push(65);
   }
 
@@ -248,7 +244,7 @@ $(function(){
     datasets: [
       {
         label: 'My First dataset',
-        backgroundColor: convertHex($.brandInfo,10),
+        backgroundColor: convertHex($.brandInfo, 10),
         borderColor: $.brandInfo,
         pointHoverBackgroundColor: '#fff',
         borderWidth: 2,
@@ -313,7 +309,7 @@ $(function(){
 
 
   //Social Box Charts
-  var labels = ['January','February','March','April','May','June','July'];
+  var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
   var options = {
     responsive: true,
@@ -323,10 +319,10 @@ $(function(){
     },
     scales: {
       xAxes: [{
-        display:false,
+        display: false,
       }],
       yAxes: [{
-        display:false,
+        display: false,
       }]
     },
     elements: {
@@ -416,7 +412,7 @@ $(function(){
 
 
   //Sparkline Charts
-  var labels = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  var labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   var options = {
     legend: {
@@ -424,10 +420,10 @@ $(function(){
     },
     scales: {
       xAxes: [{
-        display:false,
+        display: false,
       }],
       yAxes: [{
-        display:false,
+        display: false,
       }]
     },
     elements: {
@@ -542,7 +538,7 @@ $(function(){
     ]
   };
   var ctx = $('#sparkline-chart-6');
-  var sparklineChart6= new Chart(ctx, {
+  var sparklineChart6 = new Chart(ctx, {
     type: 'line',
     data: data6,
     options: options

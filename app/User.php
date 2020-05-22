@@ -58,6 +58,6 @@ class User extends Authenticatable
 
     public function agent()
     {
-        return $this->hasMany(Agent::class, 'created_by', 'id');
+        return $this->hasOne(Agent::class);
     } 
 }

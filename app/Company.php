@@ -4,6 +4,7 @@ namespace App;
 
 use App\User;
 use App\Agent;
+use App\Contact;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -23,5 +24,10 @@ class Company extends Model
     public function agent()
     {
         return $this->belongsTo(Agent::class);
+    }
+
+    public function contact()
+    {
+        return $this->hasOne(Contact::class);
     }
 }

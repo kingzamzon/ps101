@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Agent;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Repositories\AgentRepositoryInterface;
 
 class AgentController extends Controller
@@ -47,11 +50,24 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name
-        ];
+        $username = User::username($request->email);
+        $user = User::create([
+            'name' => $request->first_name.' '.$request->last_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'username' => $username,
+            'account_type' => 1,
+            'date_of_birth' => $request->dob
+        ]);
 
+        $data = [
+            'user_id' => $user->id,
+            'company_name' => $request->company_name,
+            'tel' => $request->tel,
+            'tin' => $request->tin,
+            'address' => $request->address,
+            'home_no' => $request->home_no,
+        ];
         $agent = $this->_agent->create($data);
 
         return response()->json($agent);

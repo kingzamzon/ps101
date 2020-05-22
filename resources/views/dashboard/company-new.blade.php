@@ -129,7 +129,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="twitter_handle">Twitter Handle</label>
-                  <input type="text" class="form-control" id="twitter_handle" name="twittet_handle">
+                  <input type="text" class="form-control" id="twitter_handle" name="twitter_handle">
                 </div>
                 <div class="form-group">
                   <label for="num_of_employee">Num of Employee</label>

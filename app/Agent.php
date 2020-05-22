@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agent extends Model
 {
     protected $fillable = [
-        'first_name', 'last_name'
+        'user_id', 'company_name', 'tel', 'tin', 'address', 'home_no'
     ];
 
     public function getFullNameAttribute()
@@ -20,7 +20,7 @@ class Agent extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'created_by', 'id');
+        return $this->belongsTo(User::class);
     }
     
 }

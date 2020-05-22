@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Company;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::orderBy('id','desc')->paginate(1);
-        return view('dashboard.companies', compact('companies'));
+        return view('dashboard.contacts');
     }
 
     /**
@@ -25,7 +25,9 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('dashboard.company-new');
+        $companies = Company::orderBy('name','asc')->get();
+
+        return view('dashboard.contacts-new', compact('companies'));
     }
 
     /**
@@ -46,53 +48,45 @@ class CompanyController extends Controller
                                 "number" => $request->number,
                                 "home" => $request->home
                             ];
-        $company_info = (object) [ "website" => $request->website,
-                            "description" => $request->description,
-                            "twittet_handle" => $request->twittet_handle, 
-                            "num_of_employee" => $request->num_of_employee,
-                            "average_revenue" => $request->average_revenue,
-                            "identifier" => $request->identifier,
-                            "category" => $request->category,
-                            "industry" => $request->industry,
-                            "stock_symbol" => $request->stock_symbol,
-                            "priority" => $request->priority,
-                        ];
+        
         $address =  json_encode($address);
         $phone = json_encode($phone);
-        $company_info = json_encode($company_info);
+
         $data = [
-            "name" => $request->name,
-            "access" => $request->access,
-            "tags" => $request->tags,        
+            "full_name" => $request->full_name,
+            "email" => $request->email,
+            "status" => $request->status,     
+            "company_id" => $request->company,     
+            "tags" => $request->tags,     
+            "birthday" => $request->birthday,     
             "address" => $address,
-            "phone" => $phone, 
-            "company_info" => $company_info
+            "phone" => $phone,
+            "description" => $request->description
         ];
-        return Company::create($data);
-        return response()->json($request->all());
+
+        return Contact::create($data);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Company  $company
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show(Contact $contact)
     {
-        $company['address'] = json_decode($company->address);
-        $company['phone'] = json_decode($company->phone);
-        $company['company_info'] = json_decode($company->company_info);
-        return view('dashboard.company-view', compact('company'));
+        $contact['address'] = json_decode($contact->address);
+        $contact['phone'] = json_decode($contact->phone);
+        return view('dashboard.contacts-view', compact('contact'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Company  $company
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
+    public function edit(Contact $contact)
     {
         //
     }
@@ -101,10 +95,10 @@ class CompanyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Company  $company
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Request $request, Contact $contact)
     {
         //
     }
@@ -112,10 +106,10 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Company  $company
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
+    public function destroy(Contact $contact)
     {
         //
     }

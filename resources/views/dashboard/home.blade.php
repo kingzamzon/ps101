@@ -13,6 +13,7 @@
 
   <div class="container-fluid">
     <div class="animated fadeIn">
+      @if(Auth::user()->account_type == 0)
       <div class="card">
         <div class="card-body">
           <div class="row">
@@ -89,15 +90,15 @@
         </form>
         </div>
       </div>
+      
       <div class="row">
-
         <div class="col-md-6">
-
           <div class="card">
             <div class="card-header">
               <strong> <i class="fa fa-user"></i> Agents Information</strong>
             </div>
             <div class="card-body">
+              @if($agents->count() > 0)
               <table class="table table-responsive-sm table-bordered table-sm">
                 <thead>
                   <tr>
@@ -107,10 +108,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if($agents->count() > 0)
                     @foreach($agents as $agent)
                       <tr>
-                        <td>{{$agent->full_name}}</td>
+                        <td>{{$agent->user->name}}</td>
                         <td>{{$agent->created_at}}</td>
                         <td>
                           <a class="btn btn-success btn-sm" href="{{ route('agents.show', ['agent' => $agent->id]) }}">
@@ -125,9 +125,11 @@
                         </td>
                       </tr>
                     @endforeach
-                  @endif
                 </tbody>
               </table>
+              @else 
+                <p>No Agents </p>
+              @endif
               <div>
                 {{ $agents->links() }}
               </div>
@@ -305,6 +307,55 @@
         <!--/.col-->
       </div>
       <!--/.row-->
+      
+      @else 
+      <div class="card">
+        <div class="card-body">
+            <h3>Personal Information</h3>
+            <hr class="m-0">
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3"> <b>Full Name</b></div>
+            <div class="col-md-9">{{Auth::user()->name}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Username</b></div>
+            <div class="col-md-9">{{Auth::user()->username}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Date Of Birth</b></div>
+            <div class="col-md-9">{{Auth::user()->date_of_birth}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Company</b></div>
+            <div class="col-md-9">{{Auth::user()->agent->company_name}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Cell phone</b></div>
+            <div class="col-md-9">{{Auth::user()->agent->tel}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Social Security / TIN Number</b></div>
+            <div class="col-md-9">{{Auth::user()->agent->tin}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Home Number</b></div>
+            <div class="col-md-9">{{Auth::user()->agent->home_no}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Mailing Address</b></div>
+            <div class="col-md-9">{{Auth::user()->agent->address}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"> <b>Created At</b></div>
+            <div class="col-md-9">{{Auth::user()->created_at}}</div>
+          </div>
+        </div>
+        <!-- card body-->
+      </div>
+      @endif
+
 </main>
 
 @endsection

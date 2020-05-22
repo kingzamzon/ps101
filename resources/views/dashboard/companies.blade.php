@@ -29,6 +29,7 @@
           </div>
         </div>
         <div class="card-body">
+          @if($companies->count() > 0)
           <table class="table table-striped table-bordered datatable">
             <thead>
               <tr>
@@ -38,7 +39,6 @@
               </tr>
             </thead>
             <tbody>
-              @if($companies->count() > 0)
                 @foreach($companies as $company)
               <tr>
                 <td>{{$company->name}}</td>
@@ -56,9 +56,11 @@
                 </td>
               </tr>
                 @endforeach
-              @endif
             </tbody>
           </table>
+          @else 
+            <p> No Company </p>
+          @endif
           <div>
             {{ $companies->links() }}
           </div>

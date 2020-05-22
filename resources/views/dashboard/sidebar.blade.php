@@ -9,7 +9,7 @@
           <a class="nav-link" href="#"><i class="icon-calendar"></i> Calendar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contacts.html"><i class="fa fa-group"></i> Contacts</a>
+          <a class="nav-link" href="{{ route('contacts.index') }}"><i class="fa fa-group"></i> Contacts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('company.index') }}"><i class="fa-building fa"></i> Companies</a>

@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
-{{$company->name}}
+  {{$company->name}}
 @endsection
 
 @section('main')
@@ -41,13 +41,13 @@
               <div class="row">
                 <div class="col-md-3"> <b>Address</b></div>
                 <div class="col-md-9">
-                  {{$address->street_address}}
+                  {{$company->address->street_address}}
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Phone</b></div>
                 <div class="col-md-9">
-                  {{$phone->number}} | {{$phone->home}}
+                  {{$company->phone->number}} | {{$company->phone->home}}
                 </div>
               </div>
               <div class="row">
@@ -57,48 +57,48 @@
               <div class="row">
                 <div class="col-md-3"> <b>Description</b></div>
                 <div class="col-md-9">
-                  {{$company_info->description}}
+                  {{$company->company_info->description}}
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Website</b></div>
                 <div class="col-md-9">
-                  {{$company_info->website}}
+                  {{$company->company_info->website}}
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Twitter Handle</b></div>
                 <div class="col-md-9">
-                  {{$company_info->twitter_handle}}
+                  {{$company->company_info->twitter_handle}}
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Industry</b></div>
-                <div class="col-md-9">{{$company_info->industry}}</div>
+                <div class="col-md-9">{{$company->company_info->industry}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Num of Employee</b></div>
-                <div class="col-md-9">{{$company_info->num_of_employee}}</div>
+                <div class="col-md-9">{{$company->company_info->num_of_employee}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Stock Symbol</b></div>
-                <div class="col-md-9">{{$company_info->stock_symbol}}</div>
+                <div class="col-md-9">{{$company->company_info->stock_symbol}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Average Revenue</b></div>
-                <div class="col-md-9">{{$company_info->average_revenue}}</div>
+                <div class="col-md-9">{{$company->company_info->average_revenue}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Priority</b></div>
-                <div class="col-md-9">{{$company_info->priority}}</div>
+                <div class="col-md-9">{{$company->company_info->priority}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Identifier</b></div>
-                <div class="col-md-9">{{$company_info->identifier}}</div>
+                <div class="col-md-9">{{$company->company_info->identifier}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Category</b></div>
-                <div class="col-md-9">{{$company_info->category}}</div>
+                <div class="col-md-9">{{$company->company_info->category}}</div>
               </div>
             </div>
           </div>

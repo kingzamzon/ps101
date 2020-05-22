@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
- {{$agent->full_name}}
+  {{$agent->user->name}}
 @endsection
 
 @section('main')
@@ -10,7 +10,7 @@
 
       <!-- Breadcrumb -->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-user"></i> {{$agent->full_name}} </li>
+        <li class="breadcrumb-item"><i class="fa fa-user"></i> {{$agent->user->name}} </li>
         <!-- Breadcrumb Menu-->
         <li class="breadcrumb-menu d-md-down-none">
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -27,39 +27,45 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-header">
-                  <strong>{{$agent->full_name}}</strong>
+                  <strong>{{$agent->user->name}}</strong>
                 </div>
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-3"> <b>Middle Name</b></div>
-                    <div class="col-md-9">{{$agent->full_name}}</div>
+                    <div class="col-md-3"> <b>Full Name</b></div>
+                    <div class="col-md-9">{{$agent->user->name}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>Username</b></div>
+                    <div class="col-md-9">{{$agent->user->username}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>Date Of Birth</b></div>
+                    <div class="col-md-9">{{$agent->user->date_of_birth}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-3"> <b>Company</b></div>
-                    <div class="col-md-9">ssds</div>
+                    <div class="col-md-9">{{$agent->company_name}}</div>
                   </div>
                   <div class="row">
-                    <div class="col-md-3"> <b>Access</b></div>
-                    <div class="col-md-9">ssds</div>
+                    <div class="col-md-3"> <b>Cell phone</b></div>
+                    <div class="col-md-9">{{$agent->tel}}</div>
                   </div>
                   <div class="row">
-                    <div class="col-md-3"> <b>Tags</b></div>
-                    <div class="col-md-9">ssds</div>
+                    <div class="col-md-3"> <b>Social Security / TIN Number</b></div>
+                    <div class="col-md-9">{{$agent->tin}}</div>
                   </div>
                   <div class="row">
-                    <div class="col-md-3"> <b>Emails</b></div>
-                    <div class="col-md-9"><a href="#" data-toggle="modal" data-target="#myModal"> sam@gmail.com</a>
-                    </div>
+                    <div class="col-md-3"> <b>Home Number</b></div>
+                    <div class="col-md-9">{{$agent->home_no}}</div>
                   </div>
                   <div class="row">
-                    <div class="col-md-3"> <b>phone</b></div>
-                    <div class="col-md-9">ssds</div>
+                    <div class="col-md-3"> <b>Mailing Address</b></div>
+                    <div class="col-md-9">{{$agent->address}}</div>
                   </div>
                   <div class="row">
-                    <div class="col-md-3"> <b>position</b></div>
-                    <div class="col-md-9">ssds</div>
+                    <div class="col-md-3"> <b>Created At</b></div>
+                    <div class="col-md-9">{{$agent->created_at}}</div>
                   </div>
-                  <!-- check d rest later -->
                 </div>
               </div>
             </div>
