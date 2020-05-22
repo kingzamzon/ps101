@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  Agent View
+ {{$agent->full_name}}
 @endsection
 
 @section('main')
@@ -10,7 +10,7 @@
 
       <!-- Breadcrumb -->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-user"></i> Agent Name</li>
+        <li class="breadcrumb-item"><i class="fa fa-user"></i> {{$agent->full_name}} </li>
         <!-- Breadcrumb Menu-->
         <li class="breadcrumb-menu d-md-down-none">
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -27,12 +27,12 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-header">
-                  <strong>John JOshua</strong>
+                  <strong>{{$agent->full_name}}</strong>
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-3"> <b>Middle Name</b></div>
-                    <div class="col-md-9">ssds</div>
+                    <div class="col-md-9">{{$agent->full_name}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-3"> <b>Company</b></div>

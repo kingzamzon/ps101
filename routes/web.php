@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.appd');
-});
+Route::get('/', 'PagesController@index');
 
 Auth::routes();
 
@@ -25,5 +23,7 @@ Route::get('/tt/{email}', function ($email) {
     // $username = $extracted_email_address.$random_letters;
     // return $username;
 });
+
+Route::resource('agents', 'AgentController');
 
 // Route /agents/name/calendar show agent calendar 

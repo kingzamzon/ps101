@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Agent;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $agents = Agent::orderBy('id')->paginate(1);
+        
+        return view('dashboard.home', compact('agents'));
     }
 }
