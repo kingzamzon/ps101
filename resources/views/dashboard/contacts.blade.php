@@ -29,34 +29,24 @@
           </div>
         </div>
         <div class="card-body">
+          @if($contacts->count() > 0)
           <table class="table table-striped table-bordered datatable">
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Address</th>
                 <th>Status</th>
-                <th>Phone</th>
                 <th>Email</th>
                 <th>Options</th>
               </tr>
             </thead>
             <tbody>
+              @foreach($contacts as $contact)
               <tr>
-                <td>No records found</td>
-                <td>No records found</td>
-                <td>No records found</td>
-                <td>No records found</td>
-                <td>No records found</td>
-                <td>No records found</td>
-              </tr>
-              <tr>
-                <td>John Joshua</td>
-                <td>2012/01/01</td>
-                <td>2012/01/01</td>
-                <td>2012/01/01</td>
-                <td>2012/01/01</td>
+                <td>{{$contact->full_name}}</td>
+                <td>{{$contact->status}}</td>
+                <td>{{$contact->email}}</td>
                 <td>
-                  <a class="btn btn-success" href="company-view.html">
+                  <a class="btn btn-success" href="{{ route('contacts.show', ['contact' => $contact->id]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
                   <a class="btn btn-info" href="#">
@@ -67,9 +57,10 @@
                   </a>
                 </td>
               </tr>
-
+              @endforeach
             </tbody>
           </table>
+          @endif
         </div>
       </div>
     </div>

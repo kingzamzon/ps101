@@ -1,4 +1,4 @@
-$(function (){
+$(function () {
   $("#date").mask("99/99/9999");
   $("#phone").mask("(999) 999-9999");
   $("#tin").mask("99-9999999");
@@ -6,7 +6,7 @@ $(function (){
   $("#eyescript").mask("~9.99 ~9.99 999");
   $("#ccn").mask("9999 9999 9999 9999");
 
-  $('#select2-1, #select2-2, #select2-4').select2({
+  $('#select2-1, #select2-2, #select2-4, #select2-5, #select2-6').select2({
     theme: "bootstrap"
   });
 
@@ -14,6 +14,13 @@ $(function (){
     theme: "bootstrap",
     placeholder: "Your Favorite Football Team",
     allowClear: true
+  });
+
+  $('input[name="date"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1901,
+    maxYear: parseInt(moment().format('YYYY'), 10)
   });
 
   $('input[name="daterange"]').daterangepicker({

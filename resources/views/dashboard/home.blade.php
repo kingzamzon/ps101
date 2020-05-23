@@ -128,7 +128,7 @@
                 </tbody>
               </table>
               @else 
-                <p>No Agents </p>
+                <p>No Agent </p>
               @endif
               <div>
                 {{ $agents->links() }}

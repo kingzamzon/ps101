@@ -30,31 +30,49 @@
             </div>
             <div class="card-body">
               <div class="row">
+                <div class="col-md-3"> <b>Full Name</b></div>
+                <div class="col-md-9">{{$contact->full_name}}</div>
+              </div>
+              <div class="row">
                 <div class="col-md-3"> <b>Company</b></div>
                 <div class="col-md-9">{{$contact->company->name}}</div>
               </div>
               <div class="row">
-                <div class="col-md-3"> <b>Access</b></div>
-                <div class="col-md-9">ssds</div>
-              </div>
-              <div class="row">
-                <div class="col-md-3"> <b>Tags</b></div>
-                <div class="col-md-9">ssds</div>
-              </div>
-              <div class="row">
-                <div class="col-md-3"> <b>Emails</b></div>
-                <div class="col-md-9"><a href="#" data-toggle="modal" data-target="#myModal"> {{$contact->email}}</a>
+                <div class="col-md-3"> <b>Address</b></div>
+                <div class="col-md-9">
+                  {{$contact->address->street_address}}
+                  {{$contact->address->city}}
+                  {{$contact->address->state}}
+                  {{$contact->address->country}}
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Phone</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">
+                  {{$contact->phone->number}} | {{$contact->phone->home}}
+                </div>
               </div>
               <div class="row">
-                <div class="col-md-3"> <b>Position</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-3"> <b>Status</b></div>
+                <div class="col-md-9">{{$contact->status}}</div>
               </div>
-              <!-- check d rest later -->
+              <div class="row">
+                <div class="col-md-3"> <b>Tags</b></div>
+                <div class="col-md-9">{{$contact->tags}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"> <b>Email</b></div>
+                <div class="col-md-9"><a href="#" data-toggle="modal" data-target="#myModal"> {{$contact->email}}</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"> <b>Birthday</b></div>
+                <div class="col-md-9">{{$contact->birthday}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"> <b>Description</b></div>
+                <div class="col-md-9">{{$contact->description}}</div>
+              </div>
             </div>
           </div>
         </div>

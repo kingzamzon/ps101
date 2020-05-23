@@ -18,7 +18,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <a class="btn" href="./event-new.html"><i class="fa fa-edit"></i> &nbsp;New</a>
+        <a class="btn" href="{{ route('events.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
       </div>
     </li>
   </ol>
@@ -30,7 +30,7 @@
           <i class="icon-calendar"></i> Calendar
 
           <div style="float:right;" class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn btn-primary btn-sm" href="./event-new.html"><i class="fa fa-edit"></i> &nbsp;New</a>
+            <a class="btn btn-primary btn-sm" href="{{ route('events.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
           </div>
         </div>
         <div class="card-body">

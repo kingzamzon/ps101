@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Deal;
+use App\Task;
 use App\Agent;
+use App\Event;
 use App\Company;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +19,16 @@ class Contact extends Model
     /**
      * Relationships
      */
+    public function deal()
+    {
+        return $this->belongsTo(Deal::class);
+    }
+
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
+
     public function agent()
     {
         return $this->belongsTo(Agent::class);
@@ -24,5 +37,10 @@ class Contact extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function event()
+    {
+        return $this->hasMany(Event::class);
     }
 }

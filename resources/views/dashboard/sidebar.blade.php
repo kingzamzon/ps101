@@ -6,7 +6,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="icon-calendar"></i> Calendar</a>
+          <a class="nav-link" href="{{ route('calendar.index') }}"><i class="icon-calendar"></i> Calendar</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('contacts.index') }}"><i class="fa fa-group"></i> Contacts</a>

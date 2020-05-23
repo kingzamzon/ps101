@@ -2,6 +2,7 @@ $(function () {
   'use strict';
 
 
+
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
     ranges: {

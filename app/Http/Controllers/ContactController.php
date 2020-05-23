@@ -15,7 +15,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('dashboard.contacts');
+        $contacts = Contact::orderBy('id','desc')->paginate(1);
+        return view('dashboard.contacts', compact('contacts'));
     }
 
     /**
