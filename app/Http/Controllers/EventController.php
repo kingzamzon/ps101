@@ -6,6 +6,7 @@ use App\Event;
 use App\Contact;
 use App\Company;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -44,19 +45,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $start_date = new Carbon($request->start_date);
+        $start_date = $start_date->toDateTimeString();
+        $end_date = new Carbon($request->end_date);
+        $end_date = $end_date->toDateTimeString();
 
         $data = [
             'title' => $request->title,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
             'category' => $request->category,
             'tags' => $request->tags,
             'user_id' => $request->user,
             'deal_id' => $request->deal,
             'task_id' => $request->task,
             'company_id' => $request->company,
-            'participants' => $request->participants,
+            'participants' => json_encode($request->participants)
         ];
 
         $agent = Event::create($data);

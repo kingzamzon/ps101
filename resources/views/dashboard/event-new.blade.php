@@ -39,7 +39,7 @@
                     <span class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                     </span>
-                    <input type="text" class="form-control"  name="start_date" />
+                    <input type="text" class="form-control"  name="start_date"/>
                   </div>
                 </fieldset>
                 <div class="form-group">

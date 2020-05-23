@@ -21,12 +21,12 @@ class Contact extends Model
      */
     public function deal()
     {
-        return $this->belongsTo(Deal::class);
+        return $this->hasMany(Deal::class);
     }
 
     public function task()
     {
-        return $this->belongsTo(Task::class);
+        return $this->hasMany(Task::class);
     }
 
     public function agent()
