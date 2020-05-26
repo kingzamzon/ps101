@@ -69,7 +69,45 @@
               <i class="fa fa-list"></i> Files
             </div>
             <div class="card-body">
-              jdhfjkdh
+              @if($documents->count() > 0)
+                @foreach($documents as $document)
+                  {{$document->title}} <br>
+                @endforeach
+              @endif
+              <div class="row">
+                <div class="col-sm">
+                  <a href="#">
+                    <div>
+                      <div class="h1 m-2">
+                        <i class="fa fa-file-excel-o "></i>
+                      </div>
+                      sdkjskldj
+                    </div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                    <div>
+                      <div class="h1 m-2">
+                        <i class="fa fa-file-excel-o "></i>
+                      </div>
+                      sdkjskldj
+                    </div>
+                  </a>
+                </div>
+                <div class="col-sm">
+                  <a href="#">
+                    <div>
+                      <div class="h1 m-2">
+                        <i class="fa fa-file-excel-o "></i>
+                      </div>
+                      sdkjskldj
+                    </div>
+                  </a>
+                </div>
+              </div>
+            
+              {{-- {{asset('files/'.Auth::user()->profile_photo) }} --}}
             </div>
           </div>
         </div>
