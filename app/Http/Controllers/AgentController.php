@@ -70,9 +70,9 @@ class AgentController extends Controller
         ];
         $agent = $this->_agent->create($data);
         $success = "Agent Created";
-        return redirect()->back()->with(['data' => $success]);
 
-        return response()->json($agent);
+        return redirect( route('agents.show', ['agent' => $agent->id]) )->with(['data' => $success]);
+        
     }
 
     /**

@@ -13,11 +13,6 @@ class Event extends Model
         'title', 'start_date', 'end_date', 'category', 'tags', 'user_id', 'deal_id', 'task_id', 'company_id', 'participants', 'description'
     ];
 
-
-    public function getTitleAttribute()
-    {
-        return "00" ;
-    }
     /**
      * Relationships
      */

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\Document;
 use Illuminate\Database\Eloquent\Model;
 
 class Agent extends Model
@@ -23,4 +24,8 @@ class Agent extends Model
         return $this->belongsTo(User::class);
     }
     
+    public function document()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

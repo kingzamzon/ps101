@@ -70,8 +70,8 @@ class CompanyController extends Controller
         ];
         $company = Company::create($data);
         $success = "Company Created";
-        return redirect()->back()->with(['data' => $success]);
-        return response()->json($request->all());
+
+        return redirect( route('company.show', ['company' => $company->id]) )->with(['data' => $success]);
     }
 
     /**

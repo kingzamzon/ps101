@@ -22,41 +22,44 @@
             <div class="card-header">
               <i class="fa fa-file-pdf-o"></i> Document/File Upload
             </div>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="name">Title</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            <form method="POST" action="{{ route('documents.store') }}" enctype="multipart/form-data" id="addJournalForm">
+              @csrf
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+                </div>
+                <div class="form-group">
+                  <label for="name">Access</label>
+                  <select id="select1" class="form-control" name="access">
+                    <option value="0">Public</option>
+                    <option value="1">Private</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="tags">Tags</label>
+                  <input type="text" class="form-control" id="tags" placeholder="Enter tags" name="tags">
+                </div>
+                <div class="form-group">
+                  <label for="file">File</label>
+                  <input type="file" class="form-control" id="file-input" name="file">
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" class="form-control" id="description" cols="30" rows="2" name="description"></textarea>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-times"></i>
+                    Discard
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-check"></i>
+                    Save
+                  </button>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="name">Access</label>
-                <select id="select1" name="select1" class="form-control">
-                  <option value="0">Public</option>
-                  <option value="1">Private</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="name">Tags</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
-              </div>
-              <div class="form-group">
-                <label for="name">File</label>
-                <input type="file" class="form-control" id="file-input" name="file-input">
-              </div>
-              <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" class="form-control" id="description" cols="30" rows="2"></textarea>
-              </div>
-              <div class="form-actions">
-                <button type="button" class="btn btn-secondary">
-                  <i class="fa fa-times"></i>
-                  Discard
-                </button>
-                <button type="submit" class="btn btn-primary">
-                  <i class="fa fa-check"></i>
-                  Save
-                </button>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
         <!--/.col-->

@@ -21,7 +21,7 @@
           <a class="nav-link" href="./tasks.html"><i class="fa fa-tasks fa"></i> Tasks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="document.html"><i class="fa fa-file-pdf-o"></i> Documents</a>
+          <a class="nav-link" href="{{ route('documents.index') }}"><i class="fa fa-file-pdf-o"></i> Documents</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="fa fa-sticky-note"></i> Reports</a>

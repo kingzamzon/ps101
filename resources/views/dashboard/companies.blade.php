@@ -44,7 +44,7 @@
                 <td>{{$company->name}}</td>
                 <td>{{$company->created_at}}</td>
                 <td>  
-                  <a class="btn btn-success" href="{{ route('company.show', ['agent' => $company->id]) }}">
+                  <a class="btn btn-success" href="{{ route('company.show', ['company' => $company->id]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
                   <a class="btn btn-info" href="#">

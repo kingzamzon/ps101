@@ -4,6 +4,7 @@ namespace App;
 
 use App\Agent;
 use App\Event;
+use App\Document;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -65,5 +66,10 @@ class User extends Authenticatable
     public function event()
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function document()
+    {
+        return $this->hasMany(Document::class);
     }
 }
