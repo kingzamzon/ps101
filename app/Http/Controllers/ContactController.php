@@ -65,7 +65,9 @@ class ContactController extends Controller
             "description" => $request->description
         ];
 
-        return Contact::create($data);
+        $contact = Contact::create($data);
+        $success = "Contact Created";
+        return redirect()->back()->with(['data' => $success]);
     }
 
     /**

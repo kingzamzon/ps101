@@ -48,7 +48,7 @@ class CompanyController extends Controller
                             ];
         $company_info = (object) [ "website" => $request->website,
                             "description" => $request->description,
-                            "twittet_handle" => $request->twittet_handle, 
+                            "twitter_handle" => $request->twitter_handle, 
                             "num_of_employee" => $request->num_of_employee,
                             "average_revenue" => $request->average_revenue,
                             "identifier" => $request->identifier,
@@ -68,7 +68,9 @@ class CompanyController extends Controller
             "phone" => $phone, 
             "company_info" => $company_info
         ];
-        return Company::create($data);
+        $company = Company::create($data);
+        $success = "Company Created";
+        return redirect()->back()->with(['data' => $success]);
         return response()->json($request->all());
     }
 

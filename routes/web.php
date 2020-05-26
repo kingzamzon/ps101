@@ -29,5 +29,7 @@ Route::resource('company', 'CompanyController');
 Route::resource('contacts', 'ContactController');
 Route::resource('calendar', 'CalendarController');
 Route::resource('events', 'EventController');
+Route::get('/calendar_data', 'CalendarController@calendar_data')->name('calendar_data');
+
 
 // Route /agents/name/calendar show agent calendar 

@@ -49,7 +49,7 @@
     {{-- @include('dashboard.aside') --}}
 
     <script>
-      var name = "sams";
+    var name = "{{Session::get('data')}}";
       $(function(){ 
         toastr.success(name, 'Success' , {
         closeButton: true,

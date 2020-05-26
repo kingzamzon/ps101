@@ -14,6 +14,10 @@ class Event extends Model
     ];
 
 
+    public function getTitleAttribute()
+    {
+        return "00" ;
+    }
     /**
      * Relationships
      */

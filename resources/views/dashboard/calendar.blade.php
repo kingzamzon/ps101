@@ -47,6 +47,46 @@
 @section('view-scripts')
 <script src="{{ asset('vendors/js/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('vendors/js/gcal.min.js') }}"></script>
-<script src="{{ asset('js/views/calendar.js') }}"></script>
+{{-- <script src="{{ asset('js/views/calendar.js') }}"></script> --}}
+<script>
+$(document).ready( function() {
 
+  $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          })
+  $.ajax({
+        url: "{{ route('calendar_data') }}",
+        method: "get",
+        success: function(data){
+          console.log(data);
+          $.each(data, function(i, v) {
+            console.log(v.id);
+            $(function () {
+            $('#calendar').fullCalendar({
+              header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+              },
+              editable: true,
+              eventLimit: true, // allow "more" link when too many events
+              events: [
+                {
+                  id: v.id,
+                  title: v.title,
+                  url: `${data.url}${v.id}`,
+                  start: v.start_date
+                },
+              ]
+            });
+            });
+          });
+        }
+    })
+
+
+})
+</script>
 @endsection

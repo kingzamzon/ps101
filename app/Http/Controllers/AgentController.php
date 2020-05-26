@@ -69,6 +69,8 @@ class AgentController extends Controller
             'home_no' => $request->home_no,
         ];
         $agent = $this->_agent->create($data);
+        $success = "Agent Created";
+        return redirect()->back()->with(['data' => $success]);
 
         return response()->json($agent);
     }

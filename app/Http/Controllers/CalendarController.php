@@ -14,6 +14,7 @@ class CalendarController extends Controller
      */
     public function index()
     {
+        // return route('events.show');
         return view('dashboard.calendar');
     }
 
@@ -46,7 +47,7 @@ class CalendarController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return '00';
     }
 
     /**
@@ -81,5 +82,12 @@ class CalendarController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function calendar_data()
+    {
+        $events = Event::orderBy('id','desc')->get();
+        $events['url'] = 'http://127.0.0.1:8000/events/';
+        return response()->json($events);
     }
 }

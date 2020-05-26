@@ -63,7 +63,9 @@ class EventController extends Controller
             'participants' => json_encode($request->participants)
         ];
 
-        $agent = Event::create($data);
+        $event = Event::create($data);
+        $success = "Event Created";
+        return redirect()->back()->with(['data' => $success]);
 
         return $agent;
 
@@ -77,7 +79,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return $event;
     }
 
     /**
