@@ -65,10 +65,8 @@ class EventController extends Controller
 
         $event = Event::create($data);
         $success = "Event Created";
-        return redirect()->back()->with(['data' => $success]);
-
-        return $agent;
-
+        // return redirect()->back()->with(['data' => $success]);
+        return redirect( route('events.show', ['event' => $event->id]) )->with(['data' => $success]);
     }
 
     /**

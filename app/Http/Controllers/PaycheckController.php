@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Paycheck;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,8 @@ class PaycheckController extends Controller
      */
     public function create()
     {
-        return view('dashboard.paycheck-new');
+        $users = User::orderBy('name','asc')->get();
+        return view('dashboard.paycheck-new', compact('users'));
     }
 
     /**

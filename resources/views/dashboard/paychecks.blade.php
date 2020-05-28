@@ -42,7 +42,7 @@
                 <td>52</td>
                 <td>John Joshua</td>
                 <td>
-                  <a class="btn btn-success" href="paycheck-view.html">
+                  <a class="btn btn-success" href="{{ route('paychecks.show', ['paycheck' => 1]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
                   <a class="btn btn-info" href="#">
