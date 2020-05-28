@@ -6,26 +6,33 @@
         </li>
 
         <li class="nav-item">
+          <a class="nav-link" href="{{ route('agents.index') }}"><i class="fa fa-user"></i> Agents</a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="{{ route('calendar.index') }}"><i class="icon-calendar"></i> Calendar</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{{ route('contacts.index') }}"><i class="fa fa-group"></i> Contacts</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{{ route('company.index') }}"><i class="fa-building fa"></i> Companies</a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="./deals.html"><i class="fa fa-handshake-o fa"></i> Deals</a>
+          <a class="nav-link" href="{{ route('paychecks.index') }}"><i class="fa fa-handshake-o fa"></i> Paychecks</a>
         </li>
-        <li class="nav-item">
+
+        {{-- <li class="nav-item">
           <a class="nav-link" href="./tasks.html"><i class="fa fa-tasks fa"></i> Tasks</a>
-        </li>
+        </li> --}}
+
         <li class="nav-item">
           <a class="nav-link" href="{{ route('documents.index') }}"><i class="fa fa-file-pdf-o"></i> Documents</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa fa-sticky-note"></i> Reports</a>
-        </li>
+
       </ul>
     </nav>
     <button class="sidebar-minimizer brand-minimizer" type="button"></button>

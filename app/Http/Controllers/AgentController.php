@@ -29,7 +29,9 @@ class AgentController extends Controller
      */
     public function index()
     {
-        return 1;
+        $agents = Agent::orderBy('id','desc')->paginate(10);
+        
+        return view('dashboard.agents', compact('agents'));
     }
 
     /**
