@@ -119,9 +119,13 @@
                           <a class="btn btn-info btn-sm" href="#">
                             <i class="fa fa-edit "></i>
                           </a>
-                          <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fa fa-trash-o "></i>
-                          </a>
+                          <form method="POST"  action="{{ route('agents.destroy', ['agent' => $agent->id]) }}" style="display:inline-block">
+                            @csrf 
+                            <input type="hidden" name="_method" value="DELETE">
+                               <button class="btn btn-danger btn-sm" type="submit">
+                                  <i class="fa fa-trash-o"></i>
+                                </button>
+                          </form>
                         </td>
                       </tr>
                     @endforeach

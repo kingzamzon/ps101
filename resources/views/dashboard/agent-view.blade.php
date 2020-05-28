@@ -16,7 +16,13 @@
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <a class="btn" href="./"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
             <a class="btn" href="{{ route('paychecks.create') }}"><i class="fa fa-handshake-o"></i> &nbsp;New Statement</a>
-            <a class="btn" href="./"><i class="fa fa-trash"></i> &nbsp;Delete</a>
+            <form method="POST"  action="{{ route('agents.destroy', ['agent' => $agent->id]) }}" style="display:inline-block">
+              @csrf 
+              <input type="hidden" name="_method" value="DELETE">
+                 <button class="btn" type="submit" style="background-color: #fff;">
+                    <i class="fa fa-trash"></i> &nbsp;Delete
+                  </button>
+            </form>
           </div>
         </li>
       </ol>

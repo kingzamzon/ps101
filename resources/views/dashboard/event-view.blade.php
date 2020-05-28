@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  Event View
+  {{$event->title}}
 @endsection
 
 @section('main')
@@ -9,14 +9,20 @@
 
   <!-- Breadcrumb -->
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">Event Title</li>
+    <li class="breadcrumb-item">{{$event->title}}</li>
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <a class="btn" href="./calendar.html"><i class="fa fa-calendar"></i></a>
+        <a class="btn" href="{{ route('calendar.index') }}"><i class="fa fa-calendar"></i></a>
         <a class="btn" href="./"><i class="fa fa-pencil-square-o "></i> &nbsp;New Note</a>
         <a class="btn" href="./"><i class="fa fa-file"></i> &nbsp;File</a>
-        <a class="btn" href="./"><i class="fa fa-trash"></i> &nbsp;Delete</a>
+        <form method="POST"  action="{{ route('events.destroy', ['event' => $event->id]) }}" style="display:inline-block">
+          @csrf 
+          <input type="hidden" name="_method" value="DELETE">
+             <button class="btn" type="submit" style="background-color: #fff;">
+                <i class="fa fa-trash"></i> &nbsp;Delete
+              </button>
+        </form>
       </div>
     </li>
   </ol>
@@ -27,32 +33,38 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              <strong>Event Title</strong>
+              <strong>{{$event->title}}</strong>
             </div>
             <div class="card-body">
               <div class="row">
                 <div class="col-md-3"> <b>Title</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$event->title}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Start Date</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$event->start_date}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>End Date</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$event->end_date}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Category</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$event->category}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Tags</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$event->tags}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Participants</b></div>
-                <div class="col-md-9"><a href="#" data-toggle="modal" data-target="#myModal"> sam@gmail.com</a>
+               
+                <div class="col-md-9">
+                  @if($event->participants)
+                    @foreach($event->participants as $participant)
+                      <a href="{{ route('contacts.show', ['contact' => $participant->id]) }}"> {{$participant->full_name}} </a>
+                    @endforeach
+                  @endif
                 </div>
               </div>
               <div class="row">
@@ -72,15 +84,7 @@
                 <div class="col-md-9">Contact selected</div>
               </div>
               <div class="row">
-                <div class="col-md-3"> <b>Deal</b></div>
-                <div class="col-md-9">ssds</div>
-              </div>
-              <div class="row">
                 <div class="col-md-3"> <b>Company</b></div>
-                <div class="col-md-9">ssds</div>
-              </div>
-              <div class="row">
-                <div class="col-md-3"> <b>Task</b></div>
                 <div class="col-md-9">ssds</div>
               </div>
               <!-- check d rest later -->

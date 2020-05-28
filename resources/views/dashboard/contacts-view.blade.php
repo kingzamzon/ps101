@@ -14,8 +14,13 @@
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <a class="btn" href="./"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
-        <a class="btn" href="./"><i class="fa fa-handshake-o"></i> &nbsp;Task</a>
-        <a class="btn" href="./"><i class="fa fa-trash"></i> &nbsp;Delete</a>
+        <form method="POST"  action="{{ route('contacts.destroy', ['contact' => $contact->id]) }}" style="display:inline-block">
+          @csrf 
+          <input type="hidden" name="_method" value="DELETE">
+             <button class="btn" type="submit" style="background-color: #fff;">
+                <i class="fa fa-trash"></i> &nbsp;Delete
+              </button>
+        </form>
       </div>
     </li>
   </ol>

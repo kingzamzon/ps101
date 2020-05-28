@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->bigInteger('deal_id')->foreign()->nullable();
             $table->bigInteger('task_id')->foreign()->nullable();
             $table->bigInteger('company_id')->foreign()->nullable();
-            $table->text('participants')->foreign()->nullable();
+            $table->string('participants')->foreign()->default([]);
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->text('description')->nullable();
