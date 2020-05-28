@@ -62,14 +62,8 @@ class AgentController extends Controller
             'date_of_birth' => $request->dob
         ]);
 
-        $data = [
-            'user_id' => $user->id,
-            'company_name' => $request->company_name,
-            'tel' => $request->tel,
-            'tin' => $request->tin,
-            'address' => $request->address,
-            'home_no' => $request->home_no,
-        ];
+        $data = $request->all();
+        $data['user_id'] = $user->id;
         $agent = $this->_agent->create($data);
         $success = "Agent Created";
 

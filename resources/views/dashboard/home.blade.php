@@ -60,7 +60,7 @@
               </div>
               <div class="form-group">
                 <label for="address">Mailing Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Enter Email">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Mailing Address">
               </div>
               <div class="form-group">
                 <label for="home_no">Home Number</label>
@@ -102,6 +102,7 @@
               <table class="table table-responsive-sm table-bordered table-sm">
                 <thead>
                   <tr>
+                    <th>Agent Number</th>
                     <th>Full Name</th>
                     <th>Date registered</th>
                     <th>Options</th>
@@ -110,6 +111,7 @@
                 <tbody>
                     @foreach($agents as $agent)
                       <tr>
+                        <td>{{$agent->id}}</td>
                         <td>{{$agent->user->name}}</td>
                         <td>{{$agent->created_at}}</td>
                         <td>

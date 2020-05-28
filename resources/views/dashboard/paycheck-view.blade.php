@@ -1,23 +1,25 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  Paycheck
+  #{{$paycheck->id}} Paycheck
 @endsection
 
 @section('main')
 <main class="main">
-
-
       <!-- Breadcrumb -->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-user"></i> Paycheck Statments </li>
+        <li class="breadcrumb-item"><i class="fa fa-user"></i> #{{$paycheck->id}} Paycheck Statement </li>
         <!-- Breadcrumb Menu-->
         <li class="breadcrumb-menu d-md-down-none">
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn" href="./"><i class="fa fa-pencil-square-o"></i> &nbsp;New Satments</a>
-            <a class="btn" href="./"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
-            <a class="btn" href="./"><i class="fa fa-handshake-o"></i> &nbsp;Task</a>
-            <a class="btn" href="./"><i class="fa fa-trash"></i> &nbsp;Delete</a>
+            <a class="btn" href="{{ route('paychecks.create') }}"><i class="fa fa-handshake-o"></i> &nbsp;New Statement</a>
+            <form method="POST"  action="{{ route('paychecks.destroy', ['paycheck' => $paycheck->id]) }}" style="display:inline-block">
+              @csrf 
+              <input type="hidden" name="_method" value="DELETE">
+                 <button class="btn" type="submit" style="background-color: #fff;">
+                    <i class="fa fa-trash"></i> &nbsp;Delete
+                  </button>
+            </form>
           </div>
         </li>
       </ol>
@@ -28,39 +30,39 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-header">
-                  <strong>John JOshua</strong>
+                  <strong>{{$paycheck->agent->user->name}}</strong>
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6"> <b>Agent Name</b></div>
-                    <div class="col-md-6">ssds</div>
+                    <div class="col-md-6">{{$paycheck->agent->user->name}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-6"> <b>Agent Number</b></div>
-                    <div class="col-md-6">ssds</div>
+                    <div class="col-md-6">{{$paycheck->agent->id}}-{{$paycheck->agent_number}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-6"> <b>Social Number</b></div>
-                    <div class="col-md-6">ssds</div>
+                    <div class="col-md-6">{{$paycheck->agent->tin}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-6"> <b>Mailing address</b></div>
-                    <div class="col-md-6">ssds</div>
+                    <div class="col-md-6">{{$paycheck->agent->address}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-6"> <b>Date Of Paycheck</b></div>
-                    <div class="col-md-6"><a href="#" data-toggle="modal" data-target="#myModal"> sam@gmail.com</a>
+                    <div class="col-md-6">
+                      {{$paycheck->paycheck_date}}
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6"> <b>Direct Deposit Number</b></div>
-                    <div class="col-md-6">ssds</div>
+                    <div class="col-md-6">{{$paycheck->deposit_no}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-6"> <b>Direct Deposit Date</b></div>
-                    <div class="col-md-6">ssds</div>
+                    <div class="col-md-6">{{$paycheck->deposit_date}}</div>
                   </div>
-                  <!-- check d rest later -->
                 </div>
               </div>
             </div>
@@ -69,7 +71,7 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-pencil-square-o"></i> Notes
+                  <i class="fa fa-pencil-square-o"></i> Body
                 </div>
                 <div class="card-body">
                     <div class=""> <b>Company Entry Number</b></div>

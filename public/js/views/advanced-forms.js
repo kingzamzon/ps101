@@ -32,6 +32,22 @@ $(function () {
     maxYear: parseInt(moment().format('YYYY'), 10)
   });
 
+  $('input[name="paycheck_date"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1901,
+    format: 'mm-dd-yyyy',
+    maxYear: parseInt(moment().format('YYYY'), 10)
+  });
+
+  $('input[name="deposit_date"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1901,
+    format: 'mm-dd-yyyy',
+    maxYear: parseInt(moment().format('YYYY'), 10)
+  });
+
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
     ranges: {

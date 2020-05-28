@@ -31,6 +31,7 @@
           <table class="table table-striped table-bordered datatable">
             <thead>
               <tr>
+                <th>Agent Number</th>
                 <th>Full Name</th>
                 <th>Date Registered</th>
                 <th>Options</th>
@@ -39,6 +40,7 @@
             <tbody>
               @foreach($agents as $agent)
               <tr>
+                <td>{{$agent->id}}</td>
                 <td>{{$agent->user->name}}</td>
                 <td>{{$agent->created_at}}</td>
                 <td>

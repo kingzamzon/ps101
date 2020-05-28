@@ -69,23 +69,15 @@
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Description</b></div>
-                <div class="col-md-9">ssds</div>
-              </div>
-              <div class="row">
-                <div class="col-md-3"> <b>Location</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$event->description}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Assigned To</b></div>
-                <div class="col-md-9">Me</div>
-              </div>
-              <div class="row">
-                <div class="col-md-3"> <b>Participant</b></div>
-                <div class="col-md-9">Contact selected</div>
+                <div class="col-md-9">{{$event->user->name}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Company</b></div>
-                <div class="col-md-9">ssds</div>
+                <div class="col-md-9">{{$event->company->name}}</div>
               </div>
               <!-- check d rest later -->
             </div>

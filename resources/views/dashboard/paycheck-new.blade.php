@@ -30,47 +30,35 @@
             <div class="form-group">
               <div class="row">
                 <div class="form-group col-sm-6">
-                  <label for="agent_number">Agent Number </label>
-                  <input type="text" class="form-control" id="agent_name" placeholder="Eg:1234" name="agent_number">
-                </div>
-                <div class="form-group col-sm-6">
-                  <label for="agent_name">Agent Name</label>
-                  <select id="select2-1" class="form-control select2-single" name="user">
-                    @if($users->count() > 0)
-                      @foreach($users as $user)
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                  <label for="agent_id">Agent Name</label>
+                  <select id="select2-1" class="form-control select2-single" name="agent_id">
+                    @if($agents->count() > 0)
+                      @foreach($agents as $agent)
+                        <option value="{{ $agent->id }}">{{ $agent->user->name }}</option>
                       @endforeach
                     @endif
                   </select>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="full_name">Social Number </label>
-                  <input type="text" class="form-control" id="fill_name" placeholder="Eg: 12345" name="full_name">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="email">Mailing Address </label>
-                  <input type="text" class="form-control" id="email" placeholder="Enter your name" name="email">
-                </div>
                   <fieldset class="form-group col-md-6">
-                    <label for="end_date">Date Of Paycheck</label>
+                    <label for="paycheck_date">Date Of Paycheck</label>
                     <div class="input-group">
                       <span class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                       </span>
-                    <input type="text" class="form-control"  name="end_date" />
+                    <input type="text" class="form-control"  name="paycheck_date" />
                     </div>
                   </fieldset>
                 <div class="form-group col-md-6">
-                  <label for="email">Direct Deposite Number</label>
-                  <input type="text" class="form-control" id="email" placeholder="Enter your name" name="email">
+                  <label for="deposit_no">Direct Deposite Number</label>
+                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
                 </div>
                   <fieldset class="form-group col-md-6">
-                    <label for="end_date">Direct Deposit Date</label>
+                    <label for="deposit_date">Direct Deposit Date</label>
                     <div class="input-group">
                       <span class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                       </span>
-                    <input type="text" class="form-control"  name="end_date" />
+                    <input type="text" class="form-control"  name="deposit_date" />
                     </div>
                   </fieldset>
               </div>

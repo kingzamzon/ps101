@@ -17,8 +17,6 @@ class CreatePaychecksTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->foreign();
             $table->bigInteger('agent_id')->foreign();
-            $table->string('social_no')->nullable();
-            $table->string('mailing_address')->nullable();
             $table->timestamp('paycheck_date');
             $table->string('deposit_no')->nullable();
             $table->timestamp('deposit_date');

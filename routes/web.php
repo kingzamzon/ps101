@@ -18,10 +18,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tt/{email}', function ($email) {
-    // $random_letters = strtolower(str_random(7));
-    // $extracted_email_address = explode('@', $email)[0];
-    // $username = $extracted_email_address.$random_letters;
-    // return $username;
+        // $format_date = explode('-', '2021-05-28 00:00:00');
+        // $year_format = (integer) substr($format_date[0], -2);
+        // $month_format = (integer) $format_date[1];
+        // $day_format = (integer) substr($format_date[2], 0, 2);
+        // return "{$year_format}{$month_format}{$day_format}";
 });
 
 Route::resource('agents', 'AgentController');

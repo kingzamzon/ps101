@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Agent;
 use App\Paycheck;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PaycheckController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,8 +36,8 @@ class PaycheckController extends Controller
      */
     public function create()
     {
-        $users = User::orderBy('name','asc')->get();
-        return view('dashboard.paycheck-new', compact('users'));
+        $agents = Agent::orderBy('id','asc')->get();
+        return view('dashboard.paycheck-new', compact('agents'));
     }
 
     /**
@@ -37,7 +48,29 @@ class PaycheckController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'agent_id' => 'required|integer',
+            'paycheck_date' => 'required',
+            'deposit_no' => 'required',
+            'deposit_date' => 'required'
+        ];
+
+        $this->validate($request, $rules);
+
+        $paycheck_date = new Carbon($request->paycheck_date);
+        $paycheck_date = $paycheck_date->toDateTimeString();
+        $deposit_date = new Carbon($request->deposit_date);
+        $deposit_date = $deposit_date->toDateTimeString();
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+        $data['paycheck_date'] = $paycheck_date;
+        $data['deposit_date'] = $deposit_date;
+
+        $data = Paycheck::create($data);
+
+        $success = "Paycheck Created";
+        return redirect( route('paychecks.show', ['paycheck' => $data->id]) )->with(['data' => $success]);
     }
 
     /**
@@ -48,7 +81,7 @@ class PaycheckController extends Controller
      */
     public function show(Paycheck $paycheck)
     {
-        //
+        return view('dashboard.paycheck-view', compact('paycheck'));
     }
 
     /**

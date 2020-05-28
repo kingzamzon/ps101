@@ -63,10 +63,8 @@ class DocumentController extends Controller
             $data['file'] = 'no-avatar.jpg';
         }
 
-        // return Storage::allfiles($directory);
         $data = Document::create($data);
-        return $data;
-        $success = "Event Created";
+        $success = "Document Uploaded";
         return redirect()->back()->with(['data' => $success]);
 
 

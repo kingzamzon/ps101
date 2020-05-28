@@ -20,14 +20,34 @@ class Event extends Model
     public function getParticipantsAttribute($participants)
     {
         $participants = json_decode($participants);
-        // return $participants;
         $user_details = [];
         for ($i=0; $i < count($participants); $i++) { 
-            $am = Contact::find($participants[$i]);
-            array_push($user_details, $am );            
+            $contact_detail = Contact::find($participants[$i]);
+            array_push($user_details, $contact_detail );            
         }
-
         return $user_details;
+    }
+
+    public function getCategoryAttribute($category)
+    {
+        if($category == 0)
+        {
+            return 'Important';
+        }else if($category == 1) {
+            return 'Opportunity';
+        }else if($category == 2) {
+            return 'Optional';
+        }else if($category == 3) {
+            return 'Crital';
+        }else if($category == 4) {
+            return 'Meeting';
+        }else if($category == 5) {
+            return 'Social';
+        }else if($category == 6) {
+            return 'Time Off';
+        }else {
+            return 'Private';
+        }
     }
     /**
      * Relationships
