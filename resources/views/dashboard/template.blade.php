@@ -46,10 +46,10 @@
     <!-- Main content -->
     @yield('main')
 
-    {{-- @include('dashboard.aside') --}}
 
+    @if(Session::get('data'))
     <script>
-    var name = "{{Session::get('data')}}";
+      var name = "{{Session::get('data')}}";
       $(function(){ 
         toastr.success(name, 'Success' , {
         closeButton: true,
@@ -57,6 +57,7 @@
         });
       })
       </script>
+    @endif
   
   <!-- CoreUI Pro main scripts -->
   <script src="{{ asset('js/app.js') }}"></script>

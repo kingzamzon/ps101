@@ -120,6 +120,10 @@ class AgentController extends Controller
      */
     public function destroy(Agent $agent)
     {
-        //
+        $agent = $agent->delete();
+
+        $success = "Agent Deleted";
+
+        return redirect( route('agents.index') )->with(['data' => $success]);
     }
 }

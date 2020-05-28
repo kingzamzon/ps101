@@ -60,29 +60,34 @@ $(document).ready( function() {
         url: "{{ route('calendar_data') }}",
         method: "get",
         success: function(data){
-          console.log(data);
+
+          // initiate an empty array
+          var calendar_data = [];
+
+          // loop through each data and add it to empty array using an object
           $.each(data, function(i, v) {
-            console.log(v.id);
-            $(function () {
+            calendar_data.push(
+                              {
+                                  id: v.id,
+                                  title: v.title,
+                                  url: `${data.url}${v.id}`,
+                                  start: v.start_date
+                              },
+                            )
+            });
+
+          $(function () {
             $('#calendar').fullCalendar({
-              header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,basicWeek,basicDay'
-              },
-              editable: true,
-              eventLimit: true, // allow "more" link when too many events
-              events: [
-                {
-                  id: v.id,
-                  title: v.title,
-                  url: `${data.url}${v.id}`,
-                  start: v.start_date
+                header: {
+                  left: 'prev,next today',
+                  center: 'title',
+                  right: 'month,basicWeek,basicDay'
                 },
-              ]
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: calendar_data
+              });
             });
-            });
-          });
         }
     })
 
