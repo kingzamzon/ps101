@@ -70,44 +70,21 @@
             </div>
             <div class="card-body">
               @if($documents->count() > 0)
-                @foreach($documents as $document)
-                  {{$document->title}} <br>
-                @endforeach
-              @endif
               <div class="row">
+                @foreach($documents as $document)
                 <div class="col-sm">
-                  <a href="#">
-                    <div>
-                      <div class="h1 m-2">
-                        <i class="fa fa-file-excel-o "></i>
-                      </div>
-                      sdkjskldj
-                    </div>
-                  </a>
+                <a href="{{asset('files/'.$document->file) }}" download>
+                  <div class="h1 m-2">
+                    <i class="fa fa-file-excel-o "></i>
+                  </div>
+                  <span class="ml-1">
+                    {{$document->title}} 
+                  </span>
+                </a>
                 </div>
-                <div class="col-sm">
-                  <a href="#">
-                    <div>
-                      <div class="h1 m-2">
-                        <i class="fa fa-file-excel-o "></i>
-                      </div>
-                      sdkjskldj
-                    </div>
-                  </a>
-                </div>
-                <div class="col-sm">
-                  <a href="#">
-                    <div>
-                      <div class="h1 m-2">
-                        <i class="fa fa-file-excel-o "></i>
-                      </div>
-                      sdkjskldj
-                    </div>
-                  </a>
-                </div>
+                @endforeach
               </div>
-            
-              {{-- {{asset('files/'.Auth::user()->profile_photo) }} --}}
+              @endif
             </div>
           </div>
         </div>

@@ -287,68 +287,31 @@
               <strong> <i class="icon-calendar"></i> Calendar</strong>
             </div>
             <div class="card-body">
+              @if($events->count() > 0)
               <table class="table table-responsive-sm table-bordered table-sm">
                 <thead>
                   <tr>
-                    <th>Username</th>
-                    <th>Date registered</th>
-                    <th>Role</th>
-                    <th>Status</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Assigned To</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($events as $event)
                   <tr>
-                    <td>Carwyn Fachtna</td>
-                    <td>2012/01/01</td>
-                    <td>Member</td>
-                    <td>
-                      <span class="badge badge-success">Active</span>
-                    </td>
+                    <td>{{$event->title}}</td>
+                    <td>{{$event->start_date}}</td>
+                    <td>{{$event->end_date}}</td>
+                    <td>{{$event->user->name}}</td>
                   </tr>
-                  <tr>
-                    <td>Nehemiah Tatius</td>
-                    <td>2012/02/01</td>
-                    <td>Staff</td>
-                    <td>
-                      <span class="badge badge-danger">Banned</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Ebbe Gemariah</td>
-                    <td>2012/02/01</td>
-                    <td>Admin</td>
-                    <td>
-                      <span class="badge badge-secondary">Inactive</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Eustorgios Amulius</td>
-                    <td>2012/03/01</td>
-                    <td>Member</td>
-                    <td>
-                      <span class="badge badge-warning">Pending</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Leopold Gáspár</td>
-                    <td>2012/01/21</td>
-                    <td>Staff</td>
-                    <td>
-                      <span class="badge badge-success">Active</span>
-                    </td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
+                @else 
+                <p>No Event In Calendar</p>
+              @endif
+              {{ $events->links() }}
             </div>
           </div>
 

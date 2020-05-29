@@ -19,33 +19,41 @@ $(function () {
   $('input[name="start_date"]').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,
-    minYear: 1901,
-    format: 'mm-dd-yyyy',
-    maxYear: parseInt(moment().format('YYYY'), 10)
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    locale: {
+      format: 'YY-MM-DD hh:mm:ss'
+    }
   });
 
   $('input[name="end_date"]').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,
-    minYear: 1901,
-    format: 'mm-dd-yyyy',
-    maxYear: parseInt(moment().format('YYYY'), 10)
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    locale: {
+      format: 'YY-MM-DD hh:mm:ss'
+    }
   });
 
   $('input[name="paycheck_date"]').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,
-    minYear: 1901,
-    format: 'mm-dd-yyyy',
-    maxYear: parseInt(moment().format('YYYY'), 10)
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    locale: {
+      format: 'YY-MM-DD hh:mm:ss'
+    }
   });
 
   $('input[name="deposit_date"]').daterangepicker({
     singleDatePicker: true,
     showDropdowns: true,
-    minYear: 1901,
-    format: 'mm-dd-yyyy',
-    maxYear: parseInt(moment().format('YYYY'), 10)
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    locale: {
+      format: 'YY-MM-DD hh:mm:ss'
+    }
   });
 
   $('input[name="daterange"]').daterangepicker({

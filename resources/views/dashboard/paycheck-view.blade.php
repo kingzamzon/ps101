@@ -71,12 +71,12 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-pencil-square-o"></i> Body
+                  <i class="fa fa-pencil-square-o"></i> Statement Body
                 </div>
                 <div class="card-body">
                     <div class=""> <b>Company Entry Number</b></div>
-                    <div class="">1234-052520-0001</div>
-                    <div class=""> <b> Company Name </b></div>
+                    <div class="">{{$paycheck->agent->id}}-{{$paycheck->agent_number}}-{{$paycheck->id}}</div>
+                    {{-- <div class=""> <b> Company Name </b></div>
                     <div class=""> bla bla</div>
                     <div class=""> <b>Total Monthly Credit Card processing </b></div>
                     <div class="">hjfhf </div>
@@ -85,30 +85,8 @@
                     <div class=""> <b>Total money paid to our agent from this company (Current Month) </b></div>
                     <div class="">hjbdhe </div>
                     <div class=""> <b> Total Commisiion Paid From these Benefit  Enrollment </b></div>
-                    <div class=""> uiu</div>
-                    <hr>
-                    <div class=""> <b> Agent Number</b></div>
-                    <div class=""> Eg: 1234</div>
-                    <div class=""> <b> The date </b></div>
-                    <div class=""> Eg: 072520</div>
-                    <div class=""> <b> The Company Number</b></div>
-                    <div class=""> Eg: 0001</div>
-                    <div class=""> <b> Total Credit card Processing (Previous Month) </b></div>
-                    <div class=""> uiu</div>
-                    <div class=""> <b> Total funds Paid to Our Company From Our Processor </b></div>
-                    <div class=""> uiu</div>
-                    <div class=""> <b> The Amount the agent it being paid this month from the company </b></div>
-                    <div class=""> uiu</div>
-                    <div class=""> <b> the number of employees that are enrolled in the benefits plan </b></div>
-                    <div class=""> uiu</div>
-                    <div class=""> <b> The total commissions being paid from the enrollment </b></div>
-                    <div class=""> uiu</div>
-
+                    <div class=""> uiu</div> --}}
                 </div>
-              </div>
-
-              <div class="card">
-                
               </div>
               
               

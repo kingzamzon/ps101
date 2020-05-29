@@ -1,7 +1,7 @@
 
 <footer class="app-footer">
     <span> 
-        {{ config('app.name', 'StartupClerk') }} &copy; 
+        {{ config('app.name', 'Profit Solution') }} &copy; 
           <script>
           document.write(new Date().getFullYear())
           </script>
