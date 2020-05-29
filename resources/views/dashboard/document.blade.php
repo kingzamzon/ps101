@@ -32,8 +32,8 @@
                 <div class="form-group">
                   <label for="name">Access</label>
                   <select id="select1" class="form-control" name="access">
-                    <option value="0">Public</option>
-                    <option value="1">Private</option>
+                    <option>Public</option>
+                    <option>Private</option>
                   </select>
                 </div>
                 <div class="form-group">

@@ -5,10 +5,12 @@
           <a class="nav-link" href="{{ route('home') }}"><i class="icon-speedometer"></i> Dashboard</a>
         </li>
 
+        @if(Auth::user()->account_type == 0)
         <li class="nav-item">
           <a class="nav-link" href="{{ route('agents.index') }}"><i class="fa fa-user"></i> Agents</a>
         </li>
-
+        @endif 
+        
         <li class="nav-item">
           <a class="nav-link" href="{{ route('calendar.index') }}"><i class="icon-calendar"></i> Calendar</a>
         </li>

@@ -77,8 +77,8 @@
                 <fieldset class="form-group">
                   <label for="acess">Access</label>
                   <select id="access" class="form-control" name="access">
-                    <option value="0">Public</option>
-                    <option value="1">Private</option>
+                    <option>Public</option>
+                    <option>Private</option>
                   </select>
                 </fieldset>
                 <div class="form-group">

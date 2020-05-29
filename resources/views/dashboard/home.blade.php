@@ -6,13 +6,68 @@
 
 @section('main')
 <main class="main">
-  <div class="jumbotron text-center" style="background-color: #ffff;">
-    <h1>WELCOME ONBOARD!!</h1>
-  </div>
-
-
   <div class="container-fluid">
     <div class="animated fadeIn">
+
+      <div class="card mt-3">
+        <div class="card-header">
+          <i class="icon-drop"></i> Blog
+        </div>
+        <div class="card-body">
+          <div class="col">
+            @if(Auth::user()->account_type == 0)
+            <form method="POST" action="{{ route('notes.store') }}" id="addJournalForm">
+              @csrf
+              <div class="form-group">
+                <label for="description">New Note</label>
+                <textarea name="description" class="form-control" id="description" cols="30" rows="2"></textarea>
+              </div>
+              <fieldset class="form-group">
+                <label>Access</label>
+                <select id="access" class="form-control select2-single" name="access">
+                  <option>Public</option>
+                  <option>Private</option>
+                </select>
+              </fieldset>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa fa-check"></i>
+                  Post
+                </button>
+              </div>
+            </form>
+            <hr>
+            @endif
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-list"></i> Latest post
+                </div>
+                <div class="card-body">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. A optio maxime officiis eum nihil
+                  perferendis facere qui rerum iste vel cum reiciendis sit rem, enim quo quasi consequuntur natus
+                  ipsa.
+                  <hr>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, unde illo. Illum tempora minus et
+                  molestias fugiat sit ratione iure, corrupti, debitis modi dolor nostrum doloremque. Sequi
+                  molestias culpa reprehenderit.
+                </div>
+              </div>
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       @if(Auth::user()->account_type == 0)
       <div class="card">
         <div class="card-body">
