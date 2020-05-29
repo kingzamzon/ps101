@@ -29,32 +29,44 @@
           </div>
         </div>
         <div class="card-body">
+          @if($paychecks->count() > 0)
           <table class="table table-striped table-bordered datatable">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Agent Name</th>               
                 <th>Options</th>
+                <th>Deposit Date</th>
               </tr>
             </thead>
             <tbody>
+              @foreach($paychecks as $paycheck)
               <tr>
-                <td>52</td>
-                <td>John Joshua</td>
+                <td>{{$paycheck->id}}</td>
+                <td>{{$paycheck->agent->user->name}}</td>
+                <td>{{$paycheck->deposit_date}}</td>
                 <td>
-                  <a class="btn btn-success" href="{{ route('paychecks.show', ['paycheck' => 1]) }}">
+                  <a class="btn btn-success" href="{{ route('paychecks.show', ['paycheck' => $paycheck->id]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
                   <a class="btn btn-info" href="#">
                     <i class="fa fa-edit "></i>
                   </a>
-                  <a class="btn btn-danger" href="#">
-                    <i class="fa fa-trash-o "></i>
-                  </a>
+                  <form method="POST"  action="{{ route('paychecks.destroy', ['paycheck' => $paycheck->id]) }}" style="display:inline-block">
+                    @csrf 
+                    <input type="hidden" name="_method" value="DELETE">
+                       <button class="btn btn-danger btn-sm" type="submit">
+                          <i class="fa fa-trash-o"></i>
+                        </button>
+                  </form>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
+          @else
+            <p>No Paycheck</p>
+          @endif
         </div>
       </div>
     </div>

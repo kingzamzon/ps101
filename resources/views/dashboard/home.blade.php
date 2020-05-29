@@ -44,25 +44,18 @@
                   <i class="fa fa-list"></i> Latest post
                 </div>
                 <div class="card-body">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. A optio maxime officiis eum nihil
-                  perferendis facere qui rerum iste vel cum reiciendis sit rem, enim quo quasi consequuntur natus
-                  ipsa.
-                  <hr>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, unde illo. Illum tempora minus et
-                  molestias fugiat sit ratione iure, corrupti, debitis modi dolor nostrum doloremque. Sequi
-                  molestias culpa reprehenderit.
+                  @if($agents->count() > 0)
+                    @foreach($notes as $note)
+                      {{$note->description}} <br>
+                      {{$note->created_at}}
+                      <hr>
+                    @endforeach
+                  @else 
+                    <p>No Note.</p>
+                  @endif
                 </div>
               </div>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
+              {{ $notes->links() }}
             </div>
           </div>
         </div>
@@ -157,7 +150,6 @@
               <table class="table table-responsive-sm table-bordered table-sm">
                 <thead>
                   <tr>
-                    <th>Agent Number</th>
                     <th>Full Name</th>
                     <th>Date registered</th>
                     <th>Options</th>
@@ -166,7 +158,6 @@
                 <tbody>
                     @foreach($agents as $agent)
                       <tr>
-                        <td>{{$agent->id}}</td>
                         <td>{{$agent->user->name}}</td>
                         <td>{{$agent->created_at}}</td>
                         <td>
@@ -199,45 +190,48 @@
 
           <div class="card">
             <div class="card-header">
-              <strong> <i class="fa fa-handshake-o"></i> Deals</strong>
+              <strong> <i class="fa fa-handshake-o"></i> Paychecks</strong>
             </div>
             <div class="card-body">
+              @if($paychecks->count() > 0)
               <table class="table table-responsive-sm table-bordered table-sm">
                 <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Close Date</th>
+                    <th>#</th>
+                    <th>Agent Name</th>
+                    <th>Deposit Date</th>
                     <th>Options</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($paychecks as $paycheck)
                   <tr>
-                    <td>Carwyn Fachtna</td>
-                    <td>2012/01/01</td>
+                    <td>{{$paycheck->id}}</td>
+                    <td>{{$paycheck->agent->user->name}}</td>
+                    <td>{{$paycheck->deposit_date}}</td>
                     <td>
-                      <a class="btn btn-success btn-sm" href="deals-view.html">
+                      <a class="btn btn-success btn-sm" href="{{ route('paychecks.show', ['paycheck' => $paycheck->id]) }}">
                         <i class="fa fa-search-plus "></i>
                       </a>
                       <a class="btn btn-info btn-sm" href="#">
                         <i class="fa fa-edit "></i>
                       </a>
-                      <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fa fa-trash-o "></i>
-                      </a>
+                      <form method="POST"  action="{{ route('paychecks.destroy', ['paycheck' => $paycheck->id]) }}" style="display:inline-block">
+                        @csrf 
+                        <input type="hidden" name="_method" value="DELETE">
+                           <button class="btn btn-danger btn-sm" type="submit">
+                              <i class="fa fa-trash-o"></i>
+                            </button>
+                      </form>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
+              @else 
+                <p>No Paychecks</p>
+              @endif
+              {{ $paychecks->links() }}
             </div>
           </div>
 
@@ -249,25 +243,25 @@
 
           <div class="card">
             <div class="card-header">
-              <strong>Contacts</strong>
+              <strong> <i class="fa fa-group"></i> Contacts</strong>
             </div>
             <div class="card-body">
+              @if($contacts->count() > 0)
               <table class="table table-responsive-sm table-bordered table-sm">
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Agent Name</th>
-                    <th>Phone</th>
+                    <th>Status</th>
                     <th>Options</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($contacts as $contact)
                   <tr>
-                    <td>Carwyn Fachtna</td>
-                    <td>Carwyn Fachtna</td>
-                    <td>+22 9083736</td>
+                    <td>{{$contact->full_name}}</td>
+                    <td>{{$contact->status}}</td>
                     <td>
-                      <a class="btn btn-success btn-sm" href="contacts-view.html">
+                      <a class="btn btn-success btn-sm" href="{{ route('contacts.show', ['contact' => $contact->id]) }}">
                         <i class="fa fa-search-plus "></i>
                       </a>
                       <a class="btn btn-info btn-sm" href="#">
@@ -278,25 +272,19 @@
                       </a>
                     </td>
                   </tr>
-
+                  @endforeach
                 </tbody>
               </table>
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
+              @else 
+                <p>No Contact</p>
+              @endif
+              {{ $contacts->links() }}
             </div>
           </div>
 
           <div class="card">
             <div class="card-header">
-              <strong>Calendar</strong>
+              <strong> <i class="icon-calendar"></i> Calendar</strong>
             </div>
             <div class="card-body">
               <table class="table table-responsive-sm table-bordered table-sm">

@@ -93,29 +93,6 @@
             <div class="row">
               <div class="col-sm-6">
                 <fieldset class="form-group">
-                  <label>Deal</label>
-                  <select id="select2-2" class="form-control select2-single" name="deal">
-                    @if($deals->count() > 0)
-                      @foreach($deals as $deal)
-                        <option value="{{ $deal->id }}">{{ $deal->name }}</option>
-                      @endforeach
-                    @endif
-                  </select>
-                </fieldset>
-                <fieldset class="form-group">
-                  <label>Task</label>
-                  <select id="select2-4" class="form-control select2-single" name="task">
-                    @if($tasks->count() > 0)
-                      @foreach($tasks as $task)
-                        <option value="{{ $task->id }}">{{ $task->name }}</option>
-                      @endforeach
-                    @endif
-                  </select>
-                </fieldset>
-                <!-- /.col-sm-6-->
-              </div>
-              <div class="col-sm-6">
-                <fieldset class="form-group">
                   <label>Company</label>
                   <select id="select2-5" class="form-control select2-single" name="company">
                     @if($companys->count() > 0)
@@ -125,6 +102,30 @@
                     @endif
                   </select>
                 </fieldset>
+
+                {{-- <fieldset class="form-group">
+                  <label>Task</label>
+                  <select id="select2-4" class="form-control select2-single" name="task">
+                    @if($tasks->count() > 0)
+                      @foreach($tasks as $task)
+                        <option value="{{ $task->id }}">{{ $task->name }}</option>
+                      @endforeach
+                    @endif
+                  </select>
+                </fieldset> --}}
+                <!-- /.col-sm-6-->
+              </div>
+              <div class="col-sm-6">
+                {{-- <fieldset class="form-group">
+                  <label>Deal</label>
+                  <select id="select2-2" class="form-control select2-single" name="deal">
+                    @if($deals->count() > 0)
+                      @foreach($deals as $deal)
+                        <option value="{{ $deal->id }}">{{ $deal->name }}</option>
+                      @endforeach
+                    @endif
+                  </select>
+                </fieldset> --}}
                 <fieldset class="form-group">
                   <label>Participants (Contacts)</label>
                   <select id="select2-6" class="form-control select2-multiple" multiple="" name="participants[]">

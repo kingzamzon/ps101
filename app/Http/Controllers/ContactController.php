@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -55,6 +65,7 @@ class ContactController extends Controller
 
         $data = [
             "full_name" => $request->full_name,
+            "created_by" => auth()->user()->id,
             "email" => $request->email,
             "status" => $request->status,     
             "company_id" => $request->company,     

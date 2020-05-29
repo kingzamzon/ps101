@@ -60,6 +60,8 @@
               @endforeach
             </tbody>
           </table>
+          @else 
+          <p>No Contacts</p>
           @endif
         </div>
       </div>

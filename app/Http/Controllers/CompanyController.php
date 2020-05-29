@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -62,6 +73,7 @@ class CompanyController extends Controller
         $company_info = json_encode($company_info);
         $data = [
             "name" => $request->name,
+            "created_by" => auth()->user()->id,
             "access" => $request->access,
             "tags" => $request->tags,        
             "address" => $address,

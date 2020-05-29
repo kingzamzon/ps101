@@ -13,7 +13,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <a class="btn" href="./"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
+        <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
         <form method="POST"  action="{{ route('contacts.destroy', ['contact' => $contact->id]) }}" style="display:inline-block">
           @csrf 
           <input type="hidden" name="_method" value="DELETE">
@@ -40,7 +40,11 @@
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Company</b></div>
-                <div class="col-md-9">{{$contact->company->name}}</div>
+                <div class="col-md-9">
+                  @if($contact->company_id)
+                    {{$contact->company->name}}
+                  @endif
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Address</b></div>

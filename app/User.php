@@ -4,14 +4,16 @@ namespace App;
 
 use App\Agent;
 use App\Event;
+use App\Contact;
 use App\Document;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -71,5 +73,10 @@ class User extends Authenticatable
     public function document()
     {
         return $this->hasMany(Document::class);
+    }
+
+    public function contact()
+    {
+        return $this->hasMany(Contact::class, 'created_by', 'id');
     }
 }

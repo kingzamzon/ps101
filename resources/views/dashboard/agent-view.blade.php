@@ -14,7 +14,7 @@
         <!-- Breadcrumb Menu-->
         <li class="breadcrumb-menu d-md-down-none">
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn" href="./"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
+            <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
             <a class="btn" href="{{ route('paychecks.create') }}"><i class="fa fa-handshake-o"></i> &nbsp;New Statement</a>
             <form method="POST"  action="{{ route('agents.destroy', ['agent' => $agent->id]) }}" style="display:inline-block">
               @csrf 

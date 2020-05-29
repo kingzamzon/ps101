@@ -7,17 +7,16 @@ use App\Agent;
 use App\Event;
 use App\Contact;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'name', 'access', 'tags', 'address', 'phone', 'company_info'
+        'name', 'created_by', 'access', 'tags', 'address', 'phone', 'company_info'
     ];
 
-    // public function getFullNameAttribute()
-    // {
-    //     return "{$this->first_name} {$this->last_name}";
-    // }
 
     /**
      * Relationships
@@ -25,6 +24,11 @@ class Company extends Model
     public function agent()
     {
         return $this->belongsTo(Agent::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
     public function contact()

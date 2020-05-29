@@ -14,8 +14,8 @@
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <a class="btn" href="{{ route('calendar.index') }}"><i class="fa fa-calendar"></i></a>
-        <a class="btn" href="./"><i class="fa fa-pencil-square-o "></i> &nbsp;New Note</a>
-        <a class="btn" href="./"><i class="fa fa-file"></i> &nbsp;File</a>
+        <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
+        {{-- <a class="btn" href="./"><i class="fa fa-file"></i> &nbsp;File</a> --}}
         <form method="POST"  action="{{ route('events.destroy', ['event' => $event->id]) }}" style="display:inline-block">
           @csrf 
           <input type="hidden" name="_method" value="DELETE">
@@ -60,7 +60,7 @@
                 <div class="col-md-3"> <b>Participants</b></div>
                
                 <div class="col-md-9">
-                  @if($event->participants)
+                  @if($event->participants != [])
                     @foreach($event->participants as $participant)
                       <a href="{{ route('contacts.show', ['contact' => $participant->id]) }}"> {{$participant->full_name}} </a>
                     @endforeach
@@ -77,7 +77,11 @@
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Company</b></div>
-                <div class="col-md-9">{{$event->company->name}}</div>
+                <div class="col-md-9">
+                  @if($event->company_id)
+                      {{$event->company->name}}
+                  @endif
+                </div>
               </div>
               <!-- check d rest later -->
             </div>

@@ -19,13 +19,18 @@ class Event extends Model
 
     public function getParticipantsAttribute($participants)
     {
-        $participants = json_decode($participants);
-        $user_details = [];
-        for ($i=0; $i < count($participants); $i++) { 
-            $contact_detail = Contact::find($participants[$i]);
-            array_push($user_details, $contact_detail );            
+        if($participants != [])
+        {
+            $participants = json_decode($participants);
+            $user_details = [];
+            for ($i=0; $i < count($participants); $i++) { 
+                $contact_detail = Contact::find($participants[$i]);
+                array_push($user_details, $contact_detail );            
+            }
+            return $user_details;
+        }else {
+            return $user_details = [];
         }
-        return $user_details;
     }
 
     public function getCategoryAttribute($category)

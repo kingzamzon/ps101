@@ -26,7 +26,9 @@ class PaycheckController extends Controller
      */
     public function index()
     {
-        return view('dashboard.paychecks');
+        $paychecks = Paycheck::orderBy('id','desc')->paginate(10);
+
+        return view('dashboard.paychecks', compact('paychecks'));
     }
 
     /**

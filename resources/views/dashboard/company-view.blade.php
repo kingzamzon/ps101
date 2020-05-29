@@ -13,7 +13,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <a class="btn" href="./"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
+        <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
         <a class="btn" href="./"><i class="fa fa-user"></i> &nbsp;New User</a>
         <form method="POST"  action="{{ route('company.destroy', ['company' => $company->id]) }}" style="display:inline-block">
           @csrf 

@@ -16,14 +16,16 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('full_name');
+            $table->bigInteger('created_by')->foreign();
             $table->string('email')->nullable();
             $table->string('status');
-            $table->integer('company_id');
+            $table->integer('company_id')->nullable();
             $table->string('tags')->nullable();
             $table->string('birthday')->nullable();
             $table->text('address');
             $table->text('phone');
             $table->string('description')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

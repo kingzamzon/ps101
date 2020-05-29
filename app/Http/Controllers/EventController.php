@@ -45,10 +45,25 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+
+        $rules = [
+            'title' => 'required|string',
+            'category' => 'required',
+            'tags' => 'required',
+        ];
+
+        $this->validate($request, $rules);
+
         $start_date = new Carbon($request->start_date);
         $start_date = $start_date->toDateTimeString();
         $end_date = new Carbon($request->end_date);
         $end_date = $end_date->toDateTimeString();
+
+        if($request->has('participants')){
+            $participants = json_encode($request->participants);
+        }else {
+            $participants = '[]';
+        }
 
         $data = [
             'title' => $request->title,
@@ -60,7 +75,7 @@ class EventController extends Controller
             'deal_id' => $request->deal,
             'task_id' => $request->task,
             'company_id' => $request->company,
-            'participants' => json_encode($request->participants)
+            'participants' => $participants
         ];
 
         $event = Event::create($data);
