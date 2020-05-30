@@ -81,46 +81,46 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="first_name">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your First Name">
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your First Name" required>
               </div>
               <div class="form-group">
                 <label for="company_name">Company Name</label>
-                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter your Company Name">
+                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter your Company Name" required>
               </div>
               <div class="form-group">
                 <label for="tel">Cell phone</label>
-                <input type="tel" class="form-control" id="tel" name="tel" placeholder="Enter your Cell Number">
+                <input type="tel" class="form-control" id="tel" name="tel" placeholder="Enter your Cell Number" required>
               </div>
               <div class="form-group">
                 <label for="tin">Social Security / TIN Number</label>
-                <input type="text" class="form-control" id="tin" name="tin" placeholder="Enter Social Security / TIN Number ">
+                <input type="text" class="form-control" id="tin" name="tin" placeholder="Enter Social Security / TIN Number " required>
               </div>
               <div class="form-group">
                 <label for="email">Login Email</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Username">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Username" required>
               </div>
               <!-- /.col-sm-6-->
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name">
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" required>
               </div>
               <div class="form-group">
                 <label for="address">Mailing Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Mailing Address">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Mailing Address" required>
               </div>
               <div class="form-group">
                 <label for="home_no">Home Number</label>
-                <input type="tel" class="form-control" id="home_no" name="home_no" placeholder="Enter your Home Number">
+                <input type="tel" class="form-control" id="home_no" name="home_no" placeholder="Enter your Home Number"required>
               </div>
               <div class="form-group">
                 <label for="dob">Date Of Birth</label>
-                <input type="Date" class="form-control" id="dob" name="dob">
+                <input type="Date" class="form-control" id="dob" name="dob" required>
               </div>
               <div class="form-group">
                 <label for="password">Login Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
               </div>
               <!-- col-sm-6  -->
             </div>
