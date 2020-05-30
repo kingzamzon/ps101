@@ -11,7 +11,7 @@
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>@yield('page-title') | Agent Portal</title>
+  <title>@yield('page-title') | Profit Solutions</title>
 
   <!-- Icons -->
   <link href="{{ asset('vendors/css/flag-icon.min.css') }}" rel="stylesheet">
