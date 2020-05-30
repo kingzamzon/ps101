@@ -26,11 +26,11 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="full_name">Full Name </label>
-                  <input type="text" class="form-control" id="full_name" placeholder="Enter full name" name="full_name">
+                  <input type="text" class="form-control" id="full_name" placeholder="Enter full name" name="full_name" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                  <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
                 </div>
                 <fieldset class="form-group">
                   <label>Status</label>
@@ -93,7 +93,7 @@
                 </fieldset>
                 <div class="form-group">
                   <label for="tags">Tags</label>
-                  <input type="text" class="form-control" id="tags" placeholder="Enter your name" name="tags">
+                  <input type="text" class="form-control" id="tags" placeholder="Enter your name" name="tags" required>
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone</label>
