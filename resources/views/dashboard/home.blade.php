@@ -120,7 +120,7 @@
               </div>
               <div class="form-group">
                 <label for="password">Login Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter Password ">
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
               </div>
               <!-- col-sm-6  -->
             </div>
@@ -164,7 +164,7 @@
                           <a class="btn btn-success btn-sm" href="{{ route('agents.show', ['agent' => $agent->id]) }}">
                             <i class="fa fa-search-plus "></i>
                           </a>
-                          <a class="btn btn-info btn-sm" href="#">
+                          <a class="btn btn-info btn-sm" href="{{ route('agents.edit', ['agent' => $agent->id]) }}">
                             <i class="fa fa-edit "></i>
                           </a>
                           <form method="POST"  action="{{ route('agents.destroy', ['agent' => $agent->id]) }}" style="display:inline-block">

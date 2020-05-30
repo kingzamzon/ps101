@@ -91,7 +91,7 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-        //
+        return view('dashboard.agent-edit', compact('agent'));
     }
 
     /**
@@ -103,7 +103,22 @@ class AgentController extends Controller
      */
     public function update(Request $request, Agent $agent)
     {
-        //
+        $username = User::username($request->email);
+        $user = User::find($agent->user_id);
+        $user->name = $request->first_name.' '.$request->last_name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->username = $username;
+        $user->date_of_birth = $request->dob;
+        $user->save();
+
+        $agent = Agent::find($agent->id);
+        $agent->tel = $request->tel;
+        $agent->save();
+
+        $success = "Agent Updated";
+
+        return redirect( route('agents.show', ['agent' => $agent->id]) )->with(['data' => $success]);
     }
 
     /**
@@ -114,6 +129,7 @@ class AgentController extends Controller
      */
     public function destroy(Agent $agent)
     {
+        $user = User::find($agent->user_id)->delete();
         $agent = $agent->delete();
 
         $success = "Agent Deleted";

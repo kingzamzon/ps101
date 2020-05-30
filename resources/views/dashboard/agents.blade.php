@@ -45,7 +45,7 @@
                   <a class="btn btn-success btn-sm" href="{{ route('agents.show', ['agent' => $agent->id]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
-                  <a class="btn btn-info btn-sm" href="#">
+                  <a class="btn btn-info btn-sm" href="{{ route('agents.edit', ['agent' => $agent->id]) }}">
                     <i class="fa fa-edit "></i>
                   </a>
                   <form method="POST"  action="{{ route('agents.destroy', ['agent' => $agent->id]) }}" style="display:inline-block">

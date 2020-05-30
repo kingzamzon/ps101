@@ -56,6 +56,16 @@ class User extends Authenticatable
         return $username;
     }
 
+    public function getFirstNameAttribute()
+    {
+        return explode(' ', $this->name)[0];
+    }
+
+    public function getLastNameAttribute()
+    {
+        return explode(' ', $this->name)[1];
+    }
+
     /**
      * Relationships
      */
