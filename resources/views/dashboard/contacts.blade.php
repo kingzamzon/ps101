@@ -46,15 +46,19 @@
                 <td>{{$contact->status}}</td>
                 <td>{{$contact->email}}</td>
                 <td>
-                  <a class="btn btn-success" href="{{ route('contacts.show', ['contact' => $contact->id]) }}">
+                  <a class="btn btn-success btn-sm" href="{{ route('contacts.show', ['contact' => $contact->id]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
-                  <a class="btn btn-info" href="#">
+                  <a class="btn btn-info btn-sm" href="{{ route('contacts.edit', ['contact' => $contact->id]) }}">
                     <i class="fa fa-edit "></i>
                   </a>
-                  <a class="btn btn-danger" href="#">
-                    <i class="fa fa-trash-o "></i>
-                  </a>
+                  <form method="POST"  action="{{ route('contacts.destroy', ['contact' => $contact->id]) }}" style="display:inline-block">
+                    @csrf 
+                    <input type="hidden" name="_method" value="DELETE">
+                       <button class="btn btn-danger btn-sm" type="submit">
+                          <i class="fa fa-trash-o"></i>
+                        </button>
+                  </form>
                 </td>
               </tr>
               @endforeach

@@ -108,7 +108,10 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        $company['address'] = json_decode($company->address);
+        $company['phone'] = json_decode($company->phone);
+        $company['company_info'] = json_decode($company->company_info);
+        return view('dashboard.company-edit', compact('company'));
     }
 
     /**
@@ -120,7 +123,47 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $address = (object) [   
+            "street_address" => $request->street_address, 
+            "city" => $request->street_address, 
+            "state" => $request->state,
+            "zip_code" => $request->zip_code,
+            "country" => $request->country
+        ];
+        $phone = (object) [    
+                "country" => $request->country, 
+                "number" => $request->number,
+                "home" => $request->home
+            ];
+        $company_info = (object) [ 
+            "website" => $request->website,
+            "description" => $request->description,
+            "twitter_handle" => $request->twitter_handle, 
+            "num_of_employee" => $request->num_of_employee,
+            "average_revenue" => $request->average_revenue,
+            "identifier" => $request->identifier,
+            "category" => $request->category,
+            "industry" => $request->industry,
+            "stock_symbol" => $request->stock_symbol,
+            "priority" => $request->priority,
+        ];
+
+        $address =  json_encode($address);
+        $phone = json_encode($phone);
+        $company_info = json_encode($company_info);
+
+        $company->name = $request->name;
+        $company->created_by = auth()->user()->id;
+        $company->access = $request->access;
+        $company->tags = $request->tags;
+        $company->address = $address;
+        $company->phone = $phone;
+        $company->company_info = $company_info;
+        $company->save();
+
+        $success = "Company Updated";
+
+        return redirect( route('company.show', ['company' => $company->id]) )->with(['data' => $success]);
     }
 
     /**
@@ -131,6 +174,10 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company = $company->delete();
+
+        $success = "Company Deleted";
+
+        return redirect( route('company.index') )->with(['data' => $success]);
     }
 }

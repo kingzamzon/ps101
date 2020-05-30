@@ -46,11 +46,8 @@
                 <td>{{$paycheck->agent->user->name}}</td>
                 <td>{{$paycheck->deposit_date}}</td>
                 <td>
-                  <a class="btn btn-success" href="{{ route('paychecks.show', ['paycheck' => $paycheck->id]) }}">
+                  <a class="btn btn-success btn-sm" href="{{ route('paychecks.show', ['paycheck' => $paycheck->id]) }}">
                     <i class="fa fa-search-plus "></i>
-                  </a>
-                  <a class="btn btn-info" href="#">
-                    <i class="fa fa-edit "></i>
                   </a>
                   <form method="POST"  action="{{ route('paychecks.destroy', ['paycheck' => $paycheck->id]) }}" style="display:inline-block">
                     @csrf 

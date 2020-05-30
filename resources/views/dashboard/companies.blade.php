@@ -44,15 +44,19 @@
                 <td>{{$company->name}}</td>
                 <td>{{$company->created_at}}</td>
                 <td>  
-                  <a class="btn btn-success" href="{{ route('company.show', ['company' => $company->id]) }}">
+                  <a class="btn btn-success btn-sm" href="{{ route('company.show', ['company' => $company->id]) }}">
                     <i class="fa fa-search-plus "></i>
                   </a>
-                  <a class="btn btn-info" href="#">
+                  <a class="btn btn-info btn-sm" href="{{ route('company.edit', ['company' => $company->id]) }}">
                     <i class="fa fa-edit "></i>
                   </a>
-                  <a class="btn btn-danger" href="#">
-                    <i class="fa fa-trash-o "></i>
-                  </a>
+                  <form method="POST"  action="{{ route('company.destroy', ['company' => $company->id]) }}" style="display:inline-block">
+                    @csrf 
+                    <input type="hidden" name="_method" value="DELETE">
+                       <button class="btn btn-danger btn-sm" type="submit">
+                          <i class="fa fa-trash-o"></i>
+                        </button>
+                  </form>
                 </td>
               </tr>
                 @endforeach

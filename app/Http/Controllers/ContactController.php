@@ -78,7 +78,7 @@ class ContactController extends Controller
 
         $contact = Contact::create($data);
         $success = "Contact Created";
-        return redirect()->back()->with(['data' => $success]);
+        return redirect( route('contacts.show', ['contact' => $contact->id]) )->with(['data' => $success]);
     }
 
     /**
@@ -102,7 +102,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('dashboard.contact-edit', compact('contact'));
     }
 
     /**
@@ -125,6 +125,10 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact = $contact->delete();
+
+        $success = "Contact Deleted";
+
+        return redirect( route('contacts.index') )->with(['data' => $success]);
     }
 }

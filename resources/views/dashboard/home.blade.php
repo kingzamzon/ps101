@@ -213,9 +213,6 @@
                       <a class="btn btn-success btn-sm" href="{{ route('paychecks.show', ['paycheck' => $paycheck->id]) }}">
                         <i class="fa fa-search-plus "></i>
                       </a>
-                      <a class="btn btn-info btn-sm" href="#">
-                        <i class="fa fa-edit "></i>
-                      </a>
                       <form method="POST"  action="{{ route('paychecks.destroy', ['paycheck' => $paycheck->id]) }}" style="display:inline-block">
                         @csrf 
                         <input type="hidden" name="_method" value="DELETE">
@@ -264,12 +261,16 @@
                       <a class="btn btn-success btn-sm" href="{{ route('contacts.show', ['contact' => $contact->id]) }}">
                         <i class="fa fa-search-plus "></i>
                       </a>
-                      <a class="btn btn-info btn-sm" href="#">
+                      <a class="btn btn-info btn-sm" href="{{ route('contacts.edit', ['contact' => $contact->id]) }}">
                         <i class="fa fa-edit "></i>
                       </a>
-                      <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fa fa-trash-o "></i>
-                      </a>
+                      <form method="POST"  action="{{ route('contacts.destroy', ['contact' => $contact->id]) }}" style="display:inline-block">
+                        @csrf 
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger btn-sm" type="submit">
+                            <i class="fa fa-trash-o"></i>
+                          </button>
+                      </form>
                     </td>
                   </tr>
                   @endforeach

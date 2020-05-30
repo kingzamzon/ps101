@@ -72,11 +72,7 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label for="country">Country</label>
-                        <select id="country" name="country" class="form-control" name="country">
-                          <option value="0">Please select</option>
-                          <option value="1">Option #1</option>
-                          <option value="2">Option #2</option>
-                          <option value="3">Option #3</option>
+                        <select id="country1" name="country" class="form-control" name="country">
                         </select>
                       </div>
                     </div>
@@ -106,10 +102,6 @@
                       <div class="form-group">
                         <label for="country">Country</label>
                         <select id="country" name="select1" class="form-control" name="country">
-                          <option value="0">United States</option>
-                          <option value="1">Option #1</option>
-                          <option value="2">Option #2</option>
-                          <option value="3">Option #3</option>
                         </select>
                       </div>
                     </div>
@@ -161,4 +153,19 @@
 </div>
 <!-- /.conainer-fluid -->
 </main>
+<script>
+$(document).ready( function() {
+      $.getJSON( "{{asset('industries.json')}}", function( data ) {
+      }).done(function(data) {
+          // console.log(data.industries);
+          $.each(data.industries, function( index, value ) {
+          $('#industry').append(`<option value="${value}">${value}</option>`)
+          })
+          $.each(data.countries, function( index, value ) {
+          $('#country1').append(`<option value="${value.name}">${value.name}</option>`)
+          $('#country').append(`<option value="${value.name}">${value.name}</option>`)
+          })
+      })
+  })
+</script>
 @endsection

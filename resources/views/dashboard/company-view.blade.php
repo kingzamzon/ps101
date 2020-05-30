@@ -14,7 +14,7 @@
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
-        <a class="btn" href="./"><i class="fa fa-user"></i> &nbsp;New User</a>
+        <a class="btn" href="{{ route('contacts.create') }}"><i class="fa fa-user"></i> &nbsp;New Contact</a>
         <form method="POST"  action="{{ route('company.destroy', ['company' => $company->id]) }}" style="display:inline-block">
           @csrf 
           <input type="hidden" name="_method" value="DELETE">
@@ -47,6 +47,9 @@
                 <div class="col-md-3"> <b>Address</b></div>
                 <div class="col-md-9">
                   {{$company->address->street_address}}
+                  {{$company->address->city}}
+                  {{$company->address->state}}
+                  {{$company->address->country}}
                 </div>
               </div>
               <div class="row">
@@ -129,17 +132,17 @@
             </div>
           </div>
 
-          <div class="card">
+          {{-- <div class="card">
             <div class="card-header">
               <i class="fa fa-bandcamp"></i> Events
             </div>
             <div class="card-body">
               No event
             </div>
-          </div>
+          </div> --}}
           <div class="card">
             <div class="card-header">
-              <i class="fa fa-handshake-o"></i> Deals
+              <i class="fa fa-handshake-o"></i> Paychecks
             </div>
             <div class="card-body">
               present

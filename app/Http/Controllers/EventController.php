@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -127,6 +136,10 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event = $event->delete();
+
+        $success = "Event Deleted";
+
+        return redirect( route('calendar.index') )->with(['data' => $success]);
     }
 }
