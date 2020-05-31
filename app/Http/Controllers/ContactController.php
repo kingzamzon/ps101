@@ -25,7 +25,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::orderBy('id','desc')->paginate(1);
+        if(auth()->user()->account_type == 0){
+            $contacts = Contact::orderBy('id','desc')->paginate(10);
+        }else {
+            $contacts = Contact::orderBy('id','desc')->where('created_by', auth()->user()->id )->paginate(10);
+        }
         return view('dashboard.contacts', compact('contacts'));
     }
 

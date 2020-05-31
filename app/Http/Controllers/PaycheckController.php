@@ -26,7 +26,11 @@ class PaycheckController extends Controller
      */
     public function index()
     {
-        $paychecks = Paycheck::orderBy('id','desc')->paginate(10);
+        if(auth()->user()->account_type == 0){
+            $paychecks = Paycheck::orderBy('id','desc')->paginate(10);
+        }else {
+            $paychecks = Paycheck::orderBy('id','desc')->where('agent_id', auth()->user()->agent->id )->paginate(10);
+        }
 
         return view('dashboard.paychecks', compact('paychecks'));
     }

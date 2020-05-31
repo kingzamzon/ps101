@@ -25,7 +25,12 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::orderBy('id','desc')->paginate(1);
+        if(auth()->user()->account_type == 0){
+            $companies = Company::orderBy('id','desc')->paginate(10);
+        }else {
+            $companies = Company::orderBy('id','desc')->where('created_by', auth()->user()->id )->paginate(10);
+        }
+        
         return view('dashboard.companies', compact('companies'));
     }
 
