@@ -106,7 +106,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return view('dashboard.contact-edit', compact('contact'));
+        $companies = Company::orderBy('name','asc')->get();
+        return view('dashboard.contacts-edit', compact('contact', 'companies'));
     }
 
     /**

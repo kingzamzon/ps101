@@ -26,7 +26,7 @@ Route::get('/tt/{email}', function ($email) {
 });
 
 Route::resource('agents', 'AgentController');
-Route::resource('company', 'CompanyController');
+Route::resource('prospects', 'CompanyController');
 Route::resource('contacts', 'ContactController');
 Route::resource('calendar', 'CalendarController');
 Route::resource('events', 'EventController');

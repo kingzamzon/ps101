@@ -15,7 +15,7 @@
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
         <a class="btn" href="{{ route('contacts.create') }}"><i class="fa fa-user"></i> &nbsp;New Contact</a>
-        <form method="POST"  action="{{ route('company.destroy', ['company' => $company->id]) }}" style="display:inline-block">
+        <form method="POST"  action="{{ route('prospects.destroy', ['company' => $company->id]) }}" style="display:inline-block">
           @csrf 
           <input type="hidden" name="_method" value="DELETE">
              <button class="btn" type="submit" style="background-color: #fff;">
@@ -46,16 +46,16 @@
               <div class="row">
                 <div class="col-md-3"> <b>Address</b></div>
                 <div class="col-md-9">
-                  {{$company->address->street_address}}
+                  {{-- {{$company->address->street_address}}
                   {{$company->address->city}}
                   {{$company->address->state}}
-                  {{$company->address->country}}
+                  {{$company->address->country}} --}}
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Phone</b></div>
                 <div class="col-md-9">
-                  {{$company->phone->number}} | {{$company->phone->home}}
+                  {{-- {{$company->phone->number}} | {{$company->phone->home}} --}}
                 </div>
               </div>
               <div class="row">

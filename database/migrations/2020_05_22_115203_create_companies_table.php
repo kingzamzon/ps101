@@ -18,7 +18,6 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->bigInteger('created_by')->foreign();
             $table->string('access')->nullable();
-            $table->string('tags')->nullable();
             $table->text('address');
             $table->text('phone');
             $table->text('company_info');

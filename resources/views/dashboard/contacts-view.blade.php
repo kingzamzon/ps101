@@ -13,7 +13,6 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
         <form method="POST"  action="{{ route('contacts.destroy', ['contact' => $contact->id]) }}" style="display:inline-block">
           @csrf 
           <input type="hidden" name="_method" value="DELETE">
@@ -88,40 +87,16 @@
 
 
         <div class="col-md-6">
-          <div class="card">
+          {{-- <div class="card">
             <div class="card-header">
               <i class="fa fa-pencil-square-o"></i> Notes
             </div>
             <div class="card-body">
               No Notes
             </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <i class="fa fa-bandcamp"></i> Events
-            </div>
-            <div class="card-body">
-              No event
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <i class="fa fa-handshake-o"></i> Deals
-            </div>
-            <div class="card-body">
-              present
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <i class="fa fa-list"></i> Task
-            </div>
-            <div class="card-body">
-              Present
-            </div>
-          </div>
+          </div> --}}
         </div>
+
       </div>
     </div>
 

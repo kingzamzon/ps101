@@ -26,9 +26,9 @@ class CompanyController extends Controller
     public function index()
     {
         if(auth()->user()->account_type == 0){
-            $companies = Company::orderBy('id','desc')->paginate(10);
+            $companies = Company::orderBy('name','asc')->get();
         }else {
-            $companies = Company::orderBy('id','desc')->where('created_by', auth()->user()->id )->paginate(10);
+            $companies = Company::orderBy('name','asc')->where('created_by', auth()->user()->id )->get();
         }
         
         return view('dashboard.companies', compact('companies'));
@@ -56,22 +56,16 @@ class CompanyController extends Controller
                                 "city" => $request->street_address, 
                                 "state" => $request->state,
                                 "zip_code" => $request->zip_code,
-                                "country" => $request->country
+                                "country" => $request->country,
                             ];
-        $phone = (object) [    "country" => $request->country, 
-                                "number" => $request->number,
-                                "home" => $request->home
+        $phone = (object) [    "country" => "United States", 
+                                "number" => $request->number
                             ];
         $company_info = (object) [ "website" => $request->website,
                             "description" => $request->description,
-                            "twitter_handle" => $request->twitter_handle, 
                             "num_of_employee" => $request->num_of_employee,
                             "average_revenue" => $request->average_revenue,
-                            "identifier" => $request->identifier,
-                            "category" => $request->category,
                             "industry" => $request->industry,
-                            "stock_symbol" => $request->stock_symbol,
-                            "priority" => $request->priority,
                         ];
         $address =  json_encode($address);
         $phone = json_encode($phone);
@@ -80,15 +74,14 @@ class CompanyController extends Controller
             "name" => $request->name,
             "created_by" => auth()->user()->id,
             "access" => $request->access,
-            "tags" => $request->tags,        
             "address" => $address,
             "phone" => $phone, 
             "company_info" => $company_info
         ];
         $company = Company::create($data);
-        $success = "Company Created";
+        $success = "Prospect Created";
 
-        return redirect( route('company.show', ['company' => $company->id]) )->with(['data' => $success]);
+        return redirect( route('prospects.show', ['company' => $company->id]) )->with(['data' => $success]);
     }
 
     /**

@@ -8,7 +8,7 @@
 <main class="main">
   <!-- Breadcrumb -->
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">Create new Company</li>
+    <li class="breadcrumb-item">Create new Prospect</li>
     <!-- Breadcrumb Menu-->
 
   </ol>
@@ -17,10 +17,10 @@
     <div class="animated fadeIn">
       <div class="card">
         <div class="card-header">
-          <i class="icon-note"></i> Create new Company
+          <i class="icon-note"></i> Create new Prospect
         </div>
         <div class="card-body">
-          <form method="POST" action="{{ route('company.store') }}" id="addJournalForm">
+          <form method="POST" action="{{ route('prospects.store') }}" id="addJournalForm">
             @csrf
             <div class="row">
               <div class="col-sm-6">
@@ -78,34 +78,16 @@
                   </select>
                 </fieldset>
                 <div class="form-group">
-                  <label for="phone">Phone</label>
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label for="country">Country</label>
-                        <select id="country1" class="form-control" name="country">
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label for="number">Number</label>
-                        <input type="text" class="form-control" id="number" placeholder="Number" name="number">
-                      </div>
-                    </div>
-                    <div class=" col-sm-4">
-                      <div class="form-group">
-                        <label for="home">Home</label>
-                        <input type="text" class="form-control" id="home" placeholder="Home" name="home">
-                      </div>
-                    </div>
-                  </div>
+                  <label for="number">Phone Number</label>
+                  <input type="text" class="form-control" id="number" placeholder="Number" name="number">
                 </div>
                 <div class="form-group">
-                  <label for="tags">Tags</label>
-                  <input type="text" class="form-control" id="tags" placeholder="Enter your name" name="tags" required>
+                  <label for="industry">Industry</label>
+                  <select id="industry" class="form-control select2-single" name="industry">
+                  </select>
                 </div>
-              </div>
+                <!-- /. col-sm-6-->
+              </div> 
               <!-- /. row -->
             </div>
             <div class="form-group">
@@ -120,57 +102,17 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="twitter_handle">Twitter Handle</label>
-                  <input type="text" class="form-control" id="twitter_handle" name="twitter_handle">
-                </div>
-                <div class="form-group">
                   <label for="num_of_employee">Num of Employee</label>
                   <input type="text" class="form-control" id="num_of_employee" name="num_of_employee">
-                </div>
-                <div class=" form-group">
-                  <label for="average_revenue">Average Revenue</label>
-                  <input type="text" class="form-control" id="average_revenue" name="average_revenue">
-                </div>
-                <div class=" form-group">
-                  <label for="identifier">Identifier</label>
-                  <input type="text" class="form-control" id="identifier" name="identifier">
-                </div>
-                <div class="form-group">
-                  <label for="category">Category</label>
-                  <select id="category" name="category" class="form-control">
-                    <option>Client</option>
-                    <option>Partner</option>
-                    <option>Prospect</option>
-                  </select>
                 </div>
                 <!-- /.col-sm-6-->
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="industry">Industry</label>
-                  <select id="industry" class="form-control select2-single" name="industry">
-                  </select>
+                <div class=" form-group">
+                  <label for="average_revenue">Average Revenue</label>
+                  <input type="text" class="form-control" id="average_revenue" name="average_revenue">
                 </div>
-                <div class="form-group">
-                  <label for="stock_symbol">Stock Symbol</label>
-                  <input type="text" class="form-control" id="stock_symbol" name="stock_symbol">
-                </div>
-                <fieldset class="form-group">
-                  <label>Priority</label>
-                  <select id="priority" class="form-control select2-single" name="priority">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </select>
-                </fieldset>
-                <div class="form-group">
-                  <label for="vat_number">VAT Number</label>
-                  <input type="text" class="form-control" id="vat_number">
-                </div>
-                <div class="form-group">
-                  <label for="image">Image</label>
-                  <input type="file" class="form-control" id="image" name="image">
-                </div>
+                <!-- /.col-sm-6-->
               </div>
               <!-- /. row -->
             </div>
@@ -192,18 +134,16 @@
   <!-- /.conainer-fluid -->
 </main>
 <script>
-$(document).ready( function() {
-      $.getJSON( "{{asset('industries.json')}}", function( data ) {
-      }).done(function(data) {
-          // console.log(data.industries);
-          $.each(data.industries, function( index, value ) {
-          $('#industry').append(`<option value="${value}">${value}</option>`)
-          })
-          $.each(data.countries, function( index, value ) {
-          $('#country1').append(`<option value="${value.name}">${value.name}</option>`)
-          $('#country').append(`<option value="${value.name}">${value.name}</option>`)
-          })
-      })
-  })
-</script>
+  $(document).ready( function() {
+        $.getJSON( "{{asset('industries.json')}}", function( data ) {
+        }).done(function(data) {
+            $.each(data.industries, function( index, value ) {
+              $('#industry').append(`<option value="${value}">${value}</option>`)
+            })
+            $.each(data.countries, function( index, value ) {
+            $('#country').append(`<option value="${value.name}">${value.name}</option>`)
+            })
+        })
+    })
+  </script>
 @endsection

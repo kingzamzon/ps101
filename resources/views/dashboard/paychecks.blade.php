@@ -24,9 +24,11 @@
       <div class="card">
         <div class="card-header">
          <b>Paychecks</b>
+         @if(Auth::user()->account_type == 0)
           <div style="float:right;" lass="btn-group" role="group" aria-label="Button group with nested dropdown">
             <a class="btn btn-primary btn-sm" href="{{ route('paychecks.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
           </div>
+         @endif
         </div>
         <div class="card-body">
           @if($paychecks->count() > 0)

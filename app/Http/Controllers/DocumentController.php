@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Agent;
 use App\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +28,8 @@ class DocumentController extends Controller
     public function index()
     {
         $documents = Document::orderBy('id','desc')->paginate(10);
-        return view('dashboard.document', compact('documents'));
+        $agents = Agent::orderBy('id','desc')->get();
+        return view('dashboard.document', compact('documents', 'agents'));
     }
 
     /**

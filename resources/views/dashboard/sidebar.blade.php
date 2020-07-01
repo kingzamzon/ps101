@@ -20,7 +20,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('company.index') }}"><i class="fa-building fa"></i> Companies</a>
+          <a class="nav-link" href="{{ route('prospects.index') }}"><i class="fa-building fa"></i> Prospects</a>
         </li>
 
         <li class="nav-item">

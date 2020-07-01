@@ -4,6 +4,10 @@
   Document
 @endsection
 
+@section('view-style')
+<link href="{{ asset('vendors/css/select2.min.css') }}" rel="stylesheet" />
+@endsection
+
 @section('main')
 <main class="main">
   <!-- Breadcrumb -->
@@ -34,6 +38,17 @@
                   <select id="select1" class="form-control" name="access">
                     <option>Public</option>
                     <option>Private</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="agent_id">Agent Name</label>
+                  <select id="select2-1" class="form-control select2-single" name="agent_id">
+                    <option value="0">All</option>
+                    @if($agents->count() > 0)
+                      @foreach($agents as $agent)
+                        <option value="{{ $agent->id }}">{{ $agent->user->name }}</option>
+                      @endforeach
+                    @endif
                   </select>
                 </div>
                 <div class="form-group">
@@ -94,4 +109,9 @@
   </div>
 </main>
 
+@endsection
+
+@section('view-scripts')
+<script src="{{ asset('vendors/js/select2.min.js') }}"></script>
+<script src="{{ asset('js/views/advanced-forms.js') }}"></script>
 @endsection
