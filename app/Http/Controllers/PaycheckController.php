@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Agent;
+use App\Company;
 use App\Paycheck;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -43,7 +44,8 @@ class PaycheckController extends Controller
     public function create()
     {
         $agents = Agent::orderBy('id','asc')->get();
-        return view('dashboard.paycheck-new', compact('agents'));
+        $companys = Company::orderBy('name','asc')->get();
+        return view('dashboard.paycheck-new', compact('agents', 'companys'));
     }
 
     /**

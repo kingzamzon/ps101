@@ -13,7 +13,7 @@
 <main class="main">
   <!-- Breadcrumb -->
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">New Statement</li>
+    <li class="breadcrumb-item">New Paycheck</li>
     <!-- Breadcrumb Menu-->
 
   </ol>
@@ -22,7 +22,7 @@
     <div class="animated fadeIn">
       <div class="card">
         <div class="card-header">
-          <i class="icon-note"></i> New Statement
+          <i class="icon-note"></i> New Paycheck
         </div>
         <div class="card-body">
           <form method="POST" action="{{ route('paychecks.store') }}" id="addJournalForm">
@@ -38,6 +38,36 @@
                       @endforeach
                     @endif
                   </select>
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="company_id">Company Name</label>
+                  <select id="select2-5" class="form-control select2-single" name="company_id">
+                    @if($companys->count() > 0)
+                      @foreach($companys as $company)
+                        <option value="{{ $company->id }}">{{ $company->name }}</option>
+                      @endforeach
+                    @endif
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="deposit_no">Total card Process</label>
+                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="deposit_no">Amount Commission</label>
+                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="deposit_no">Total Number of Employee</label>
+                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="deposit_no">Total Number of Benefit Plans</label>
+                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="deposit_no">Commission From Benefit card</label>
+                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
                 </div>
                   <fieldset class="form-group col-md-6">
                     <label for="paycheck_date">Date Of Paycheck</label>

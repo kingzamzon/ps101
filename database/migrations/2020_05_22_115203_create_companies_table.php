@@ -16,13 +16,15 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('created_by')->foreign();
+            $table->bigInteger('created_by');
             $table->string('access')->nullable();
             $table->text('address');
             $table->text('phone');
             $table->text('company_info');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

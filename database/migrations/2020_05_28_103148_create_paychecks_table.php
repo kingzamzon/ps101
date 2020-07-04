@@ -15,12 +15,16 @@ class CreatePaychecksTable extends Migration
     {
         Schema::create('paychecks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->foreign();
-            $table->bigInteger('agent_id')->foreign();
+            $table->bigInteger('user_id');
+            $table->bigInteger('agent_id');
             $table->timestamp('paycheck_date');
             $table->string('deposit_no')->nullable();
             $table->timestamp('deposit_date');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
         });
     }
 

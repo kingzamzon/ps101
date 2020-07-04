@@ -22,6 +22,9 @@ class CreateAgentsTable extends Migration
             $table->string('address')->nullable();
             $table->string('home_no')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

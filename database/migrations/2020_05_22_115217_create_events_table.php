@@ -17,16 +17,17 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('category');
-            $table->string('tags');
-            $table->bigInteger('user_id')->foreign()->nullable(); //assign_to
-            $table->bigInteger('deal_id')->foreign()->nullable();
-            $table->bigInteger('task_id')->foreign()->nullable();
-            $table->bigInteger('company_id')->foreign()->nullable();
+            $table->bigInteger('user_id')->nullable(); //assign_to
+            $table->bigInteger('company_id')->nullable();
             $table->string('participants')->foreign()->default('[]');
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->text('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

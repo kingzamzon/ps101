@@ -12,9 +12,11 @@
     <li class="breadcrumb-item">Paychecks</li>
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
+      @if(Auth::user()->account_type == 0)
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <a class="btn" href="{{ route('paychecks.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
       </div>
+      @endif
     </li>
   </ol>
 
