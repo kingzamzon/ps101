@@ -19,6 +19,12 @@ class CreatePaychecksTable extends Migration
             $table->bigInteger('agent_id');
             $table->timestamp('paycheck_date');
             $table->string('deposit_no')->nullable();
+            $table->string('total_card_process')->nullable();
+            $table->string('amount_commission')->nullable();
+            $table->string('total_employee')->nullable();
+            $table->string('total_benefit_plan')->nullable();
+            $table->string('commision_benefit_card')->nullable();
+            $table->string('deposit_no')->nullable();
             $table->timestamp('deposit_date');
             $table->timestamps();
             $table->softDeletes();

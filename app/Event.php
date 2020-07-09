@@ -13,7 +13,7 @@ class Event extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'start_date', 'end_date', 'category', 'tags', 'user_id', 'deal_id', 'task_id', 'company_id', 'participants', 'description'
+        'title', 'category', 'user_id', 'company_id', 'participants', 'start_date', 'end_date', 'description'
     ];
 
 

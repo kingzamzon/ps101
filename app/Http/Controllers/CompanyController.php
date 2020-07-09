@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Company;
 use Illuminate\Http\Request;
 
@@ -90,12 +91,16 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show($company)
     {
+        $company =  Company::find($company);
         $company['address'] = json_decode($company->address);
         $company['phone'] = json_decode($company->phone);
         $company['company_info'] = json_decode($company->company_info);
-        return view('dashboard.company-view', compact('company'));
+
+        $contacts = Contact::orderBy('full_name','asc')->where('company_id', $company->id)->get();
+
+        return view('dashboard.company-view', compact('company', 'contacts'));
     }
 
     /**

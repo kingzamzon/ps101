@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Agent;
 use App\User;
+use App\Note;
+use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -79,8 +81,10 @@ class AgentController extends Controller
      */
     public function show(Agent $agent)
     {
+        $notes = Note::orderBy('id','desc')->where('agent_id', $agent->id )->take(5)->get();
+        $events = Event::orderBy('id','desc')->where('user_id', $agent->user_id )->take(5)->get();
 
-        return view('dashboard.agent-view', compact('agent'));
+        return view('dashboard.agent-view', compact('agent', 'notes', 'events'));
     }
 
     /**

@@ -39,11 +39,9 @@ class EventController extends Controller
     {
         $contacts = Contact::orderBy('full_name','asc')->get();
         $companys = Company::orderBy('name','asc')->get();
-        $deals = Company::orderBy('id','desc')->get();
-        $tasks = Company::orderBy('id','desc')->get();
         $users = User::orderBy('name','asc')->get();
 
-        return view('dashboard.event-new', compact('contacts', 'companys', 'deals', 'tasks', 'users'));
+        return view('dashboard.event-new', compact('contacts', 'companys', 'users'));
     }
 
     /**
@@ -76,20 +74,17 @@ class EventController extends Controller
 
         $data = [
             'title' => $request->title,
+            'category' => $request->category,
+            'user_id' => $request->user,
+            'company_id' => $request->company,
+            'participants' => $participants,
             'start_date' => $start_date,
             'end_date' => $end_date,
-            'category' => $request->category,
-            'tags' => $request->tags,
-            'user_id' => $request->user,
-            'deal_id' => $request->deal,
-            'task_id' => $request->task,
-            'company_id' => $request->company,
-            'participants' => $participants
+            'description' => $request->description
         ];
 
         $event = Event::create($data);
         $success = "Event Created";
-        // return redirect()->back()->with(['data' => $success]);
         return redirect( route('events.show', ['event' => $event->id]) )->with(['data' => $success]);
     }
 

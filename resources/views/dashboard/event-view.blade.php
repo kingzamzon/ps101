@@ -14,8 +14,6 @@
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <a class="btn" href="{{ route('calendar.index') }}"><i class="fa fa-calendar"></i></a>
-        <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
-        {{-- <a class="btn" href="./"><i class="fa fa-file"></i> &nbsp;File</a> --}}
         <form method="POST"  action="{{ route('events.destroy', ['event' => $event->id]) }}" style="display:inline-block">
           @csrf 
           <input type="hidden" name="_method" value="DELETE">
@@ -53,10 +51,6 @@
                 <div class="col-md-9">{{$event->category}}</div>
               </div>
               <div class="row">
-                <div class="col-md-3"> <b>Tags</b></div>
-                <div class="col-md-9">{{$event->tags}}</div>
-              </div>
-              <div class="row">
                 <div class="col-md-3"> <b>Participants</b></div>
                
                 <div class="col-md-9">
@@ -90,15 +84,6 @@
 
 
         <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              <i class="fa fa-pencil-square-o "></i> Notes
-            </div>
-            <div class="card-body">
-              No notes recoreded
-            </div>
-          </div>
-
           <div class="card">
             <div class="card-header">
               <i class="fa fa-file"></i> Documents

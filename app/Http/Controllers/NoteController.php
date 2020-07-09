@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Agent;
 use App\Note;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class NoteController extends Controller
 
         $contact = Note::create($data);
         
-        $success = "New Blog Post Created";
+        $success = "Blog Created";
         return redirect()->back()->with(['data' => $success]);
 
     }
@@ -71,7 +72,8 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        //
+        $agents = Agent::orderBy('id','desc')->get();
+        return view('dashboard.blog-edit', compact('note', 'agents'));
     }
 
     /**
@@ -83,7 +85,15 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        $note->access = $request->access;
+        $note->description = $request->description;
+        $note->user_id = auth()->user()->id;
+        $note->agent_id = $request->agent_id;
+        $note->save();
+
+        $success = "Blog Updated";
+
+        return redirect( route('home') )->with(['data' => $success]);
     }
 
     /**
@@ -94,6 +104,10 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        //
+        $note = $note->delete();
+
+        $success = "Blog Deleted";
+
+        return redirect()->back()->with(['data' => $success]);
     }
 }

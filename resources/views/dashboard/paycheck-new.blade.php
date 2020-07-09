@@ -50,24 +50,24 @@
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="deposit_no">Total card Process</label>
-                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                  <label for="total_card_process">Total card Process</label>
+                  <input type="text" class="form-control" id="total_card_process" placeholder="Direct Deposite Number" name="total_card_process">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="deposit_no">Amount Commission</label>
-                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                  <label for="amount_commission">Amount Commission</label>
+                  <input type="text" class="form-control" id="amount_commission" placeholder="Amount Commission" name="amount_commission">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="deposit_no">Total Number of Employee</label>
-                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                  <label for="total_employee">Total Number of Employee</label>
+                  <input type="text" class="form-control" id="total_employee" placeholder="Total Number of Employee" name="total_employee">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="deposit_no">Total Number of Benefit Plans</label>
-                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                  <label for="total_benefit_plan">Total Number of Benefit Plans</label>
+                  <input type="text" class="form-control" id="total_benefit_plan" placeholder="Total Number of Benefit Plans" name="total_benefit_plan">
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="deposit_no">Commission From Benefit card</label>
-                  <input type="text" class="form-control" id="deposit_no" placeholder="Direct Deposite Number" name="deposit_no">
+                  <label for="commision_benefit_card">Commission From Benefit card</label>
+                  <input type="text" class="form-control" id="commision_benefit_card" placeholder="Commission From Benefit card" name="commision_benefit_card">
                 </div>
                   <fieldset class="form-group col-md-6">
                     <label for="paycheck_date">Date Of Paycheck</label>

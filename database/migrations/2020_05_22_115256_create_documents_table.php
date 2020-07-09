@@ -20,11 +20,13 @@ class CreateDocumentsTable extends Migration
             $table->string('access')->nullable();
             $table->string('tags')->nullable();
             $table->string('file');
+            $table->bigInteger('agent_id')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
         });
     }
 

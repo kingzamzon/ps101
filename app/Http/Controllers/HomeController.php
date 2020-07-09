@@ -29,10 +29,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $agents = Agent::orderBy('id','desc')->paginate(1);
-        $notes = Note::orderBy('id','desc')->paginate(5);
-        $contacts = Contact::orderBy('id','desc')->paginate(5);
-        $paychecks = Paycheck::orderBy('id','desc')->paginate(5);
+        $agents = Agent::orderBy('id','desc')->paginate(15);
+        $notes = Note::orderBy('id','desc')->paginate(15);
+        $contacts = Contact::orderBy('id','desc')->paginate(15);
+
+        if(auth()->user()->account_type == 0){
+            $paychecks = Paycheck::orderBy('id','desc')->paginate(10);
+        }else {
+            $paychecks = Paycheck::orderBy('id','desc')->where('agent_id', auth()->user()->agent->id )->take(10)->get();
+        }
+        
         $events = Event::orderBy('id','desc')->paginate(5);
 
         

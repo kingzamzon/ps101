@@ -14,8 +14,7 @@
         <!-- Breadcrumb Menu-->
         <li class="breadcrumb-menu d-md-down-none">
           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn" href="#"><i class="fa fa-pencil-square-o"></i> &nbsp;New Note</a>
-            <a class="btn" href="{{ route('paychecks.create') }}"><i class="fa fa-handshake-o"></i> &nbsp;New Statement</a>
+            <a class="btn" href="{{ route('paychecks.create') }}"><i class="fa fa-handshake-o"></i> &nbsp;New Paycheck</a>
             <form method="POST"  action="{{ route('agents.destroy', ['agent' => $agent->id]) }}" style="display:inline-block">
               @csrf 
               <input type="hidden" name="_method" value="DELETE">
@@ -80,10 +79,27 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-pencil-square-o"></i> Notes
+                  <i class="fa fa-pencil-square-o"></i> Blog
                 </div>
                 <div class="card-body">
-                  No Notes
+                  @if($notes->count() > 0)
+                  @foreach($notes as $note)
+                    <div id="exampleAccordion" data-children=".item">
+                      <div class="item">
+                        <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion{{$note->id}}" aria-expanded="true" aria-controls="exampleAccordion{{$note->id}}">
+                          {{$note->created_at}}
+                        </a>
+                        <div id="exampleAccordion{{$note->id}}" class="collapse show" role="tabpanel">
+                          <p class="mb-3">
+                            {{$note->description}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  @endforeach
+                  @else 
+                    <p>No Blog.</p>
+                  @endif
                 </div>
               </div>
 
@@ -92,25 +108,44 @@
                   <i class="fa fa-bandcamp"></i> Events
                 </div>
                 <div class="card-body">
-                  No event
+                  @if($events->count() > 0)
+                  <table class="table table-responsive-sm table-bordered table-sm">
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Options</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($events as $event)
+                      <tr>
+                        <td>{{$event->title}}</td>
+                        <td>{{$event->start_date}}</td>
+                        <td>{{$event->end_date}}</td>
+                        <td>
+                          <a class="btn btn-success btn-sm" href="{{ route('events.show', ['event' => $event->id]) }}">
+                            <i class="fa fa-search-plus "></i>
+                          </a>
+                          <form method="POST"  action="{{ route('events.destroy', ['event' => $event->id]) }}" style="display:inline-block">
+                            @csrf 
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger btn-sm" type="submit">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                    @else 
+                    <p>No Event</p>
+                  @endif
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header">
-                  <i class="fa fa-handshake-o"></i> Deals
-                </div>
-                <div class="card-body">
-                  present
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <i class="fa fa-list"></i> Task
-                </div>
-                <div class="card-body">
-                  Present
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

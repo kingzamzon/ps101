@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Paycheck extends Model
 {
     protected $fillable = [
-        'user_id', 'agent_id', 'company_id', 'paycheck_date', 'deposit_no', 'deposit_date'
+        'user_id', 'agent_id', 'company_id', 'paycheck_date', 'deposit_no', 'deposit_date', 'total_card_process', 'amount_commission', 'total_employee', 'total_benefit_plan', 'commision_benefit_card'
     ];
 
     public function getAgentNumberAttribute()
