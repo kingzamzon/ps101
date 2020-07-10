@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  New Statement
+  New Paycheck
 @endsection
 
 @section('view-style')
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="total_card_process">Total card Process</label>
-                  <input type="text" class="form-control" id="total_card_process" placeholder="Direct Deposite Number" name="total_card_process">
+                  <input type="text" class="form-control" id="total_card_process" placeholder="Total card Process" name="total_card_process">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="amount_commission">Amount Commission</label>

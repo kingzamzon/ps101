@@ -17,8 +17,8 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('category');
-            $table->bigInteger('user_id')->nullable(); //assign_to
-            $table->bigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable(); //assign_to
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->string('participants')->foreign()->default('[]');
             $table->timestamp('start_date');
             $table->timestamp('end_date');

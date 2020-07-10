@@ -1,7 +1,7 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  New Company
+  New Prospect
 @endsection
 
 @section('main')

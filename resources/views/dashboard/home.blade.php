@@ -45,7 +45,7 @@
                 </div>
               @endforeach
             @else 
-              <p>No Note.</p>
+              <p>No Blog.</p>
             @endif
             <br>
             {{ $notes->links() }}
@@ -66,12 +66,12 @@
             </div>
             <fieldset class="form-group">
               <label>Access</label>
-              <select id="access" class="form-control select2-single" name="access">
+              <select id="access" class="form-control select2-single" name="access" onChange="showAndHideAssignTo()">
                 <option>Public</option>
                 <option>Private</option>
               </select>
             </fieldset>
-            <fieldset class="form-group">
+            <fieldset class="form-group" id="assigned_to" style="display: none">
               <label for="user_id">Assigned To</label>
               <select id="select2-1" class="form-control select2-single" name="agent_id">
                 <option value=""></option>
@@ -476,5 +476,17 @@
       @endif
 
 </main>
+<script>
+  function showAndHideAssignTo() {
+    var x = document.getElementById("access").value;
+    console.log(x);
+    var y = document.getElementById("assigned_to");
+    if (x == "Public") {
+      y.style.display = "none";
+    } else {
+      y.style.display = "block";
+    }
+  }
+</script>
 
 @endsection

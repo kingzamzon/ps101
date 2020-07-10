@@ -52,7 +52,7 @@
                   <div class="row">
                     <div class="col-md-6"> <b>Date Of Paycheck</b></div>
                     <div class="col-md-6">
-                      {{$paycheck->paycheck_date}}
+                      {{$paycheck->formatted_paycheck_date}}
                     </div>
                   </div>
                   <div class="row">
@@ -61,7 +61,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-6"> <b>Direct Deposit Date</b></div>
-                    <div class="col-md-6">{{$paycheck->deposit_date}}</div>
+                    <div class="col-md-6">{{$paycheck->formatted_deposit_date}}</div>
                   </div>
                 </div>
               </div>

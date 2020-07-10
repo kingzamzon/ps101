@@ -48,7 +48,7 @@
               <tr>
                 <td>{{$paycheck->id}}</td>
                 <td>{{$paycheck->agent->user->name}}</td>
-                <td>{{$paycheck->deposit_date}}</td>
+                <td>{{$paycheck->formatted_deposit_date}}</td>
                 <td>
                   <a class="btn btn-success btn-sm" href="{{ route('paychecks.show', ['paycheck' => $paycheck->id]) }}">
                     <i class="fa fa-search-plus "></i>

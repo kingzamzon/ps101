@@ -15,8 +15,9 @@ class CreatePaychecksTable extends Migration
     {
         Schema::create('paychecks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
-            $table->bigInteger('agent_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('company_id');
             $table->timestamp('paycheck_date');
             $table->string('deposit_no')->nullable();
             $table->string('total_card_process')->nullable();
@@ -24,13 +25,13 @@ class CreatePaychecksTable extends Migration
             $table->string('total_employee')->nullable();
             $table->string('total_benefit_plan')->nullable();
             $table->string('commision_benefit_card')->nullable();
-            $table->string('deposit_no')->nullable();
             $table->timestamp('deposit_date');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

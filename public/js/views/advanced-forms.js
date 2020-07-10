@@ -22,7 +22,7 @@ $(function () {
         timePicker: true,
         startDate: moment().startOf("hour"),
         locale: {
-            format: "MM-DD-YY",
+            format: "MM-DD-Y",
         },
     });
 
@@ -32,7 +32,7 @@ $(function () {
         timePicker: true,
         startDate: moment().startOf("hour"),
         locale: {
-            format: "MM-DD-YY",
+            format: "MM-DD-Y",
         },
     });
 
@@ -42,7 +42,7 @@ $(function () {
         timePicker: true,
         startDate: moment().startOf("hour"),
         locale: {
-            format: "MM-DD-YY",
+            format: "MM-DD-Y",
         },
     });
 
@@ -52,7 +52,7 @@ $(function () {
         timePicker: true,
         startDate: moment().startOf("hour"),
         locale: {
-            format: "MM-DD-YY",
+            format: "MM-DD-Y",
         },
     });
 

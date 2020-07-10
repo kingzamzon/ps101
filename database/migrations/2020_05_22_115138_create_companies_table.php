@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('created_by');
+            $table->unsignedBigInteger('created_by');
             $table->string('access')->nullable();
             $table->text('address');
             $table->text('phone');

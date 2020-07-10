@@ -8,8 +8,20 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Paycheck extends Model
 {
     protected $fillable = [
-        'user_id', 'agent_id', 'company_id', 'paycheck_date', 'deposit_no', 'deposit_date', 'total_card_process', 'amount_commission', 'total_employee', 'total_benefit_plan', 'commision_benefit_card'
+        'user_id', 'agent_id', 'company_id', 'paycheck_date', 'deposit_no', 'total_card_process', 'amount_commission', 'total_employee', 'total_benefit_plan', 'commision_benefit_card', 'deposit_date'
     ];
+
+    protected $casts = ['paycheck_date' => 'datetime:m-d-Y', 'deposit_date' => 'datetime:m-d-Y'];
+
+    public function getFormattedPaycheckDateAttribute()
+    {
+        return $this->paycheck_date->format('m-d-Y');
+    }
+
+    public function getFormattedDepositDateAttribute()
+    {
+        return $this->deposit_date->format('m-d-Y');
+    }
 
     public function getAgentNumberAttribute()
     {

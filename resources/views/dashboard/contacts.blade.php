@@ -65,7 +65,7 @@
             </tbody>
           </table>
           @else 
-          <p>No Contacts</p>
+          <p>No Contact</p>
           @endif
         </div>
       </div>

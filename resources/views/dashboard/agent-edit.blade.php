@@ -1,14 +1,14 @@
 @extends('dashboard.template')
 
 @section('page-title')
-  New Company
+  Edit {{$agent->user->first_name}} Agent
 @endsection
 
 @section('main')
 <main class="main">
   <!-- Breadcrumb -->
   <ol class="breadcrumb">
-    <li class="breadcrumb-item">Create new Company</li>
+    <li class="breadcrumb-item">Edit Agent</li>
     <!-- Breadcrumb Menu-->
 
   </ol>
@@ -17,7 +17,7 @@
     <div class="animated fadeIn">
       <div class="card">
         <div class="card-header">
-          <i class="icon-note"></i> Create new Company
+          <i class="icon-note"></i> Edit Agent
         </div>
         <div class="card-body">
           <form method="POST" action="{{ route('agents.update', ['agent' => $agent->id]) }}" id="addJournalForm">
