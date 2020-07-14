@@ -12,7 +12,9 @@
     <li class="breadcrumb-item">Agents</li>
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
-      
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <a class="btn" href="{{ route('agents.create') }}"><i class="fa fa-edit"></i> &nbsp;New Agent</a>
+      </div>
     </li>
   </ol>
 
@@ -22,9 +24,9 @@
       <div class="card">
         <div class="card-header">
          <b>Agents</b>
-          <div style="float:right;" lass="btn-group" role="group" aria-label="Button group with nested dropdown">
-          
-          </div>
+         <div style="float:right;" lass="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <a class="btn btn-primary btn-sm" href="{{ route('agents.create') }}"><i class="fa fa-edit"></i> &nbsp;New Agent</a>
+        </div>
         </div>
         <div class="card-body">
           @if($agents->count() > 0)

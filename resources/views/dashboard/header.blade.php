@@ -160,27 +160,12 @@
       </div>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-        aria-expanded="false">
-        <img src="{{asset('img/avatars/6.jpg') }}" class="img-avatar" alt="admin@bootstrapmaster.com">
-      </a>
-      <div class="dropdown-menu dropdown-menu-right">
-        {{-- <div class="dropdown-header text-center">
-          <strong>Account</strong>
-        </div> --}}
-        {{-- <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span
-            class="badge badge-info">42</span></a> --}}
-        <div class="dropdown-header text-center">
-          <strong>Settings</strong>
-        </div>
-        <div class="divider"></div>
-        <a class="dropdown-item" href="{{ route('logout') }}"
+      <a  href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();"><i class="fa fa-lock"></i> Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           @csrf
        </form>
-      </div>
     </li>
     <button class="navbar-toggler aside-menu-toggler" type="button">
     </button>

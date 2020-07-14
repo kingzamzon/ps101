@@ -43,7 +43,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.agent-new');
     }
 
     /**
