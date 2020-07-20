@@ -65,7 +65,7 @@ $(document).ready( function() {
           var calendar_data = [];
 
           // loop through each data and add it to empty array using an object
-          $.each(data, function(i, v) {
+          $.each(data.public_event, function(i, v) {
             calendar_data.push(
                               {
                                   id: v.id,
@@ -75,7 +75,16 @@ $(document).ready( function() {
                               },
                             )
             });
-
+            $.each(data.private_event, function(i, v) {
+            calendar_data.push(
+                              {
+                                  id: v.id,
+                                  title: v.title,
+                                  url: `${data.url}${v.id}`,
+                                  start: v.new_start_date
+                              },
+                            )
+            });
           $(function () {
             $('#calendar').fullCalendar({
                 header: {

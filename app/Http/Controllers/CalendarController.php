@@ -98,11 +98,12 @@ class CalendarController extends Controller
     {
         if(auth()->user()->account_type == 0)
         {
-            $events = Event::orderBy('id','desc')->get();
+            $public_events = Event::orderBy('id','desc')->get();
         }else {
-            $events = Event::orderBy('id','desc')->where('user_id',auth()->user()->id)->get();
+            $public_events = Event::orderBy('id','desc')->where('user_id', NULL)->get();
+            $private_events = Event::orderBy('id','desc')->where('user_id',auth()->user()->id)->get();
         }
-        $events['url'] = 'http://127.0.0.1:8000/events/';
-        return response()->json($events);
+        $public_events['url'] = 'http://127.0.0.1:8000/events/';
+        return response()->json(['public_event' => $public_events, 'private_event' => $private_events]);
     }
 }

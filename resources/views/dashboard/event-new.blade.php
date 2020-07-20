@@ -76,7 +76,7 @@
                 <fieldset class="form-group">
                   <label for="user_id">Assigned To</label>
                   <select id="select2-1" class="form-control select2-single" name="user">
-                    <option value="0">All Agents</option>
+                    <option value="">All Agents</option>
                     @if($users->count() > 0)
                       @foreach($users as $user)
                         <option value="{{ $user->user->id }}">{{ $user->user->name }}</option>
