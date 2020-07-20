@@ -12,6 +12,20 @@
       @if(Auth::user()->account_type == 0)
       <div class="card mt-3">
         <div class="card-header">
+          <i class="fa fa-align-justify"></i> Welcome, Admin
+        </div>
+      </div>
+      @else 
+      <div class="card mt-3">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Welcome, {{Auth::user()->name}}
+        </div>
+      </div>
+      @endif
+
+      @if(Auth::user()->account_type == 0)
+      <div class="card mt-3">
+        <div class="card-header">
           <i class="fa fa-pencil-square-o"></i> Latest Blog
         </div>
         <div class="card-body">

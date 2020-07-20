@@ -49,6 +49,10 @@
                 <label for="email">Login Email</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="Enter Username" required>
               </div>
+              <div class="form-group">
+                <label for="agent_no">Agent Number</label>
+                <input type="text" class="form-control" id="agent_no" name="agent_no" placeholder="Agent NO" required value="55000" disabled>
+              </div>
               <!-- /.col-sm-6-->
             </div>
             <div class="col-sm-6">
@@ -75,7 +79,36 @@
               <!-- col-sm-6  -->
             </div>
           </div>
+          <p>Direct Deposit Information</p>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="bank_name">Bank Name</label>
+                <input type="text" class="form-control" id="bank_name" name="bank_name" placeholder="Bank Name" required>
+              </div>
+              <div class="form-group">
+                <label for="account_name">Account Name</label>
+                <input type="text" class="form-control" id="account_name" name="account_name" placeholder="Account Name" required>
+              </div>
+              <!-- /.col-sm-6-->
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="account_no">Account Number</label>
+                <input type="text" class="form-control" id="account_no" name="account_no" placeholder="Account Number" required>
+              </div>
+              <div class="form-group">
+                <label for="routing_no">Routing Number</label>
+                <input type="text" class="form-control" id="routing_no" name="routing_no" placeholder="Routing Number" required>
+              </div>
+              <!-- col-sm-6  -->
+            </div>
+          </div>
           <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="goBack()">
+              <i class="fa fa-times"></i>
+              Cancel
+            </button>
             <button type="submit" class="btn btn-primary">
               <i class="fa fa-check"></i>
               Save
@@ -88,6 +121,28 @@
   </div>
   <!-- /.conainer-fluid -->
 </main>
+<script>
+  function goBack(){
+    window.history.back();
+  }
+  $(document).ready( function() {
+
+  $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+  $.ajax({
+        url: "{{ route('getLastAgentNumber') }}",
+        method: "get",
+        success: function(data){
+          console.log(data);
+          $( "#agent_no" ).val(` ${data + 10} `);
+        }
+    });
+    
+  });
+</script>
 @endsection
 
 @section('view-scripts')

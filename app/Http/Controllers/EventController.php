@@ -6,6 +6,7 @@ use App\Event;
 use App\Contact;
 use App\Company;
 use App\User;
+use App\Agent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,7 @@ class EventController extends Controller
     {
         $contacts = Contact::orderBy('full_name','asc')->get();
         $companys = Company::orderBy('name','asc')->get();
-        $users = User::orderBy('name','asc')->get();
+        $users = Agent::orderBy('id','asc')->get();
 
         return view('dashboard.event-new', compact('contacts', 'companys', 'users'));
     }
@@ -61,11 +62,6 @@ class EventController extends Controller
 
         $this->validate($request, $rules);
 
-        $start_date = new Carbon($request->start_date);
-        $start_date = $start_date->toDateTimeString();
-        $end_date = new Carbon($request->end_date);
-        $end_date = $end_date->toDateTimeString();
-
         if($request->has('participants')){
             $participants = json_encode($request->participants);
         }else {
@@ -78,8 +74,8 @@ class EventController extends Controller
             'user_id' => $request->user,
             'company_id' => $request->company,
             'participants' => $participants,
-            'start_date' => $start_date,
-            'end_date' => $end_date,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
             'description' => $request->description
         ];
 

@@ -6,6 +6,7 @@ use App\Agent;
 use App\User;
 use App\Note;
 use App\Event;
+use App\DirectDepositInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,10 +68,35 @@ class AgentController extends Controller
         $data = $request->all();
         $data['user_id'] = $user->id;
         $agent = $this->_agent->create($data);
+
+        // # Create Direct Deposit Information
+        if($agent){
+            $directDepositInfo = DirectDepositInfo::create([
+                'user_id' => $user->id,
+                'bank_name' => $request->bank_name,
+                'account_name' => $request->account_name,
+                'account_no' => $request->account_no,
+                'routing_no' => $request->routing_no
+            ]);
+        }
+
         $success = "Agent Created";
 
         return redirect( route('agents.show', ['agent' => $agent->id]) )->with(['data' => $success]);
         
+    }
+
+    /**
+     * Return Lastest Agent Id.
+     *
+     * @param  \App\Agent  $agent
+     * @return \Illuminate\Http\Response
+     */
+
+    public function getLastAgentNumber()
+    {
+        $lastAgent = Agent::orderBy('id','asc')->get('id')->last();
+        return response()->json($lastAgent['agent_number']);
     }
 
     /**

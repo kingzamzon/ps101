@@ -14,11 +14,29 @@ class Agent extends Model
     protected $fillable = [
         'user_id', 'company_name', 'tel', 'tin', 'address', 'home_no'
     ];
+    
+    protected $appends = [
+        'agent_number'
+    ];
+
+    /**
+     * Getters
+     */
 
     public function getFullNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
     }
+
+    public function getAgentNumberAttribute()
+    {
+        if($this->id == 1){
+            return 55000;
+        }else {
+            return (55000 + ($this->id * 10)) - 10;
+        }
+    }
+    
     /**
      * Relationships
      */

@@ -71,7 +71,7 @@ $(document).ready( function() {
                                   id: v.id,
                                   title: v.title,
                                   url: `${data.url}${v.id}`,
-                                  start: v.start_date
+                                  start: v.new_start_date
                               },
                             )
             });
@@ -81,7 +81,7 @@ $(document).ready( function() {
                 header: {
                   left: 'prev,next today',
                   center: 'title',
-                  right: 'month,basicWeek,basicDay'
+                  right: 'year,month,basicWeek,basicDay'
                 },
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events

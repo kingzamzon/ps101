@@ -6,6 +6,7 @@ use App\Agent;
 use App\Event;
 use App\Contact;
 use App\Document;
+use App\DirectDepositInfo;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -88,5 +89,10 @@ class User extends Authenticatable
     public function contact()
     {
         return $this->hasMany(Contact::class, 'created_by', 'id');
+    }
+
+    public function directDepositInfo()
+    {
+        return $this->hasOne(DirectDepositInfo::class);
     }
 }

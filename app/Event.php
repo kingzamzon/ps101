@@ -17,6 +17,31 @@ class Event extends Model
     ];
 
 
+    protected $appends = [
+        'new_start_date', 'new_end_date'
+    ];
+
+    /**
+     * Getters
+     */
+    public function getNewStartDateAttribute()
+    {
+        $format_date = explode('-', $this->start_date);
+        $year_format = $format_date[2];
+        $month_format = $format_date[0];
+        $day_format = $format_date[1];
+        return "{$year_format}-{$month_format}-{$day_format}";
+    }
+
+    public function getNewEndDateAttribute()
+    {
+        $format_date = explode('-', $this->end_date);
+        $year_format = $format_date[2];
+        $month_format = $format_date[0];
+        $day_format = $format_date[1];
+        return "{$year_format}-{$month_format}-{$day_format}";
+    }
+
     public function getParticipantsAttribute($participants)
     {
         if($participants != [])
@@ -32,6 +57,7 @@ class Event extends Model
             return $user_details = [];
         }
     }
+
 
     public function getCategoryAttribute($category)
     {

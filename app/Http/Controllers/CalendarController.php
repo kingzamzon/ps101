@@ -96,7 +96,12 @@ class CalendarController extends Controller
 
     public function calendar_data()
     {
-        $events = Event::orderBy('id','desc')->get();
+        if(auth()->user()->account_type == 0)
+        {
+            $events = Event::orderBy('id','desc')->get();
+        }else {
+            $events = Event::orderBy('id','desc')->where('user_id',auth()->user()->id)->get();
+        }
         $events['url'] = 'http://127.0.0.1:8000/events/';
         return response()->json($events);
     }
