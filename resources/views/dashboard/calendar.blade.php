@@ -70,7 +70,7 @@ $(document).ready( function() {
                               {
                                   id: v.id,
                                   title: v.title,
-                                  url: `${data.url}${v.id}`,
+                                  url: `${data.public_event.url}${v.id}`,
                                   start: v.new_start_date
                               },
                             )
@@ -80,7 +80,7 @@ $(document).ready( function() {
                               {
                                   id: v.id,
                                   title: v.title,
-                                  url: `${data.url}${v.id}`,
+                                  url: `${data.public_event.url}${v.id}`,
                                   start: v.new_start_date
                               },
                             )
