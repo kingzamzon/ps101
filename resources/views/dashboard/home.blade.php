@@ -122,10 +122,6 @@
                 <div class="col-md-9">{{Auth::user()->name}}</div>
               </div>
               <div class="row">
-                <div class="col-md-3"> <b>Username</b></div>
-                <div class="col-md-9">{{Auth::user()->username}}</div>
-              </div>
-              <div class="row">
                 <div class="col-md-3"> <b>Date Of Birth</b></div>
                 <div class="col-md-9">{{Auth::user()->date_of_birth}}</div>
               </div>
