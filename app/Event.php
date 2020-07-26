@@ -13,7 +13,7 @@ class Event extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'category', 'user_id', 'company_id', 'participants', 'start_date', 'end_date', 'description'
+        'title', 'category', 'created_by', 'user_id', 'start_date', 'end_date', 'description'
     ];
 
 
@@ -58,28 +58,6 @@ class Event extends Model
         }
     }
 
-
-    public function getCategoryAttribute($category)
-    {
-        if($category == 0)
-        {
-            return 'Important';
-        }else if($category == 1) {
-            return 'Opportunity';
-        }else if($category == 2) {
-            return 'Optional';
-        }else if($category == 3) {
-            return 'Crital';
-        }else if($category == 4) {
-            return 'Meeting';
-        }else if($category == 5) {
-            return 'Social';
-        }else if($category == 6) {
-            return 'Time Off';
-        }else {
-            return 'Private';
-        }
-    }
     /**
      * Relationships
      */

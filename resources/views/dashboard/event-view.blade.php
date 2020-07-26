@@ -50,7 +50,7 @@
                 <div class="col-md-3"> <b>Category</b></div>
                 <div class="col-md-9">{{$event->category}}</div>
               </div>
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-md-3"> <b>Participants</b></div>
                
                 <div class="col-md-9">
@@ -60,23 +60,27 @@
                     @endforeach
                   @endif
                 </div>
-              </div>
+              </div> --}}
               <div class="row">
                 <div class="col-md-3"> <b>Description</b></div>
                 <div class="col-md-9">{{$event->description}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Assigned To</b></div>
-                <div class="col-md-9">{{$event->user->name}}</div>
+                @if($event->user_id == NULL)
+                  <div class="col-md-9">{{ "All Agents" }}</div>
+                @else 
+                  <div class="col-md-9">{{$event->user->name}}</div>
+                @endif
               </div>
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-md-3"> <b>Company</b></div>
                 <div class="col-md-9">
                   @if($event->company_id)
                       {{$event->company->name}}
                   @endif
                 </div>
-              </div>
+              </div> --}}
               <!-- check d rest later -->
             </div>
           </div>
@@ -84,14 +88,14 @@
 
 
         <div class="col-md-6">
-          <div class="card">
+          {{-- <div class="card">
             <div class="card-header">
               <i class="fa fa-file"></i> Documents
             </div>
             <div class="card-body">
               No Present
             </div>
-          </div>
+          </div> --}}
 
         </div>
       </div>

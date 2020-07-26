@@ -15,9 +15,9 @@
           <a class="nav-link" href="{{ route('calendar.index') }}"><i class="icon-calendar"></i> Calendar</a>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link" href="{{ route('contacts.index') }}"><i class="fa fa-group"></i> Contacts</a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
           <a class="nav-link" href="{{ route('prospects.index') }}"><i class="fa-building fa"></i> Prospects</a>

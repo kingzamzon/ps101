@@ -12,7 +12,7 @@ class Agent extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'company_name', 'tel', 'tin', 'address', 'home_no'
+        'user_id', 'company_name', 'tel', 'tin', 'mail_address', 'home_no', 'address'
     ];
     
     protected $appends = [

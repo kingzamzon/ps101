@@ -41,7 +41,7 @@
                 <th>Last Name</th>
                 <th>Agent Number</th>
                 <th>Telephone Number</th>
-                <th>Social Security/TIN number</th>
+                {{-- <th>Social Security/TIN number</th> --}}
                 <th>Options</th>
               </tr>
             </thead>
@@ -52,12 +52,12 @@
                 <td>{{$agent->user->lastname}}</td>
                 <td>{{$agent->agent_number}}</td>
                 <td>{{$agent->tel}}</td>
-                <td>{{$agent->tin}}</td>
+                {{-- <td>{{$agent->tin}}</td> --}}
                 <td>
-                  <a class="btn btn-success btn-sm" target="_blank" href="{{ route('agents.show', ['agent' => $agent->id]) }}">
+                  <a class="btn btn-success btn-sm" href="{{ route('agents.show', ['agent' => $agent->id]) }}">
                     <i class="fa fa-search-plus "></i> View
                   </a>
-                  <a class="btn btn-info btn-sm text-white" target="_blank" href="{{ route('agents.edit', ['agent' => $agent->id]) }}">
+                  <a class="btn btn-info btn-sm text-white" href="{{ route('agents.edit', ['agent' => $agent->id]) }}">
                     <i class="fa fa-edit "></i> Edit
                   </a>
                   <form method="POST"  action="{{ route('agents.destroy', ['agent' => $agent->id]) }}" style="display:inline-block">
@@ -67,6 +67,9 @@
                           <i class="fa fa-trash-o"></i>
                         </button>
                   </form>
+                  <a class="btn btn-secondary btn-sm text-white" target="_blank" href="{{ route('agents.dashboard', ['agent' => $agent->id]) }}">
+                    <i class="fa fa-edit "></i> Dashboard
+                  </a>
                 </td>
               </tr>
               @endforeach

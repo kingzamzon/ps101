@@ -16,11 +16,12 @@ class CreateAgentsTable extends Migration
         Schema::create('agents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('company_name');
+            $table->string('company_name')->nullable();
             $table->string('tel');
             $table->string('tin')->nullable();
-            $table->string('address')->nullable();
+            $table->string('mail_address')->nullable();
             $table->string('home_no')->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

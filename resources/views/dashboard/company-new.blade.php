@@ -20,13 +20,22 @@
           <i class="icon-note"></i> Create new Prospect
         </div>
         <div class="card-body">
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
           <form method="POST" action="{{ route('prospects.store') }}" id="addJournalForm">
             @csrf
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name" required>
+                  <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name" value="{{ old('name') }}" required>
                 </div>
                 <div class="form-group">
                   <label for="address">Address</label>
@@ -35,13 +44,13 @@
                       <div class="form-group">
                         <label for="street_address">Street Address</label>
                         <input type="text" id="street address" class="form-control" placeholder="Street address"
-                          name="street_address" required>
+                          name="street_address" value="{{ old('street_address') }}" required>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" id="city" class="form-control" placeholder="City" name="city">
+                        <input type="text" id="city" class="form-control" placeholder="City" name="city" value="{{ old('city') }}">
                       </div>
                     </div>
                   </div>
@@ -49,19 +58,19 @@
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label for="state">State</label>
-                        <input type="text" id="state" class="form-control" placeholder="State" name="state">
+                        <input type="text" id="state" class="form-control" placeholder="State" name="state" value="{{ old('state') }}">
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label for="zip_code">Zip Code</label>
-                        <input type="text" id="zip_code" class="form-control" placeholder="Zip Code" name="zip_code">
+                        <input type="text" id="zip_code" class="form-control" placeholder="Zip Code" name="zip_code" value="{{ old('zip_code') }}">
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label for="country">Country</label>
-                        <select id="country" class="form-control" name="country">
+                        <select id="country" class="form-control" name="country" value="{{ old('country') }}">
                         </select>
                       </div>
                     </div>
@@ -79,7 +88,7 @@
                 </fieldset>
                 <div class="form-group">
                   <label for="number">Phone Number</label>
-                  <input type="text" class="form-control" id="number" placeholder="Number" name="number">
+                  <input type="text" class="form-control" id="number" placeholder="Number" name="number" value="{{ old('number') }}">
                 </div>
                 <div class="form-group">
                   <label for="industry">Industry</label>
@@ -92,34 +101,36 @@
             </div>
             <div class="form-group">
               <label for="website">Website</label>
-              <input type="text" class="form-control" id="website" placeholder="Website" name="website" required>
+              <input type="text" class="form-control" id="website" placeholder="Website" name="website" value="{{ old('website') }}" equired>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
               <textarea name="description" class="form-control" id="description" cols="10" rows="3"
-                name="description" required></textarea>
+                name="description" required>
+                {{ old('description') }}
+              </textarea>
             </div>
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="num_of_employee">Num of Employee</label>
-                  <input type="text" class="form-control" id="num_of_employee" name="num_of_employee">
+                  <input type="number" class="form-control" id="num_of_employee" name="num_of_employee" value="{{ old('num_of_employee') }}">
                 </div>
                 <!-- /.col-sm-6-->
               </div>
               <div class="col-sm-6">
                 <div class=" form-group">
                   <label for="average_revenue">Average Revenue</label>
-                  <input type="text" class="form-control" id="average_revenue" name="average_revenue">
+                  <input type="text" class="form-control" id="average_revenue" name="average_revenue" value="{{ old('average_revenue') }}">
                 </div>
                 <!-- /.col-sm-6-->
               </div>
               <!-- /. row -->
             </div>
             <div class="form-actions">
-              <button type="button" class="btn btn-secondary">
+              <button type="button" class="btn btn-secondary" onclick="window.history.back()">
                 <i class="fa fa-times"></i>
-                Discard
+                Cancel
               </button>
               <button type="submit" class="btn btn-primary">
                 <i class="fa fa-check"></i>

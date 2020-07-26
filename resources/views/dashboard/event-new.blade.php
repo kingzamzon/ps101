@@ -25,13 +25,22 @@
           <i class="icon-note"></i> Create new Event
         </div>
         <div class="card-body">
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
           <form method="POST" action="{{ route('events.store') }}" id="addJournalForm">
             @csrf
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter your name" name="title">
+                  <input type="text" class="form-control" id="name" placeholder="Enter your name" name="title" value="{{ old('title') }}">
                 </div>
                 <fieldset class="form-group">
                   <label for="start_date">Start Date</label>
@@ -39,40 +48,29 @@
                     <span class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                     </span>
-                    <input type="text" class="form-control"  name="start_date"/>
+                    <input type="text" class="form-control"  name="start_date" value="{{ old('start_date') }}"/>
                   </div>
                 </fieldset>
                 <div class="form-group">
                   <label for="category">Category</label>
                   <select id="select1" class="form-control" name="category">
-                    <option value="0">Important</option>
-                    <option value="1">Opportunity</option>
-                    <option value="2">Optional</option>
-                    <option value="3">Crital</option>
-                    <option value="4">Meeting</option>
-                    <option value="5">Social</option>
-                    <option value="6">Time Off</option>
-                    <option value="7">Private</option>
+                    <option>Important</option>
+                    <option>Opportunity</option>
+                    <option>Optional</option>
+                    <option>Crital</option>
+                    <option>Meeting</option>
+                    <option>Social</option>
+                    <option>Time Off</option>
+                    <option>Private</option>
                   </select>
                 </div>
                 <!-- /.col-sm-6-->
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="tags">Tags</label>
                   <input type="text" class="form-control" id="tags" placeholder="Enter your name" name="tags">
-                </div>
-                <div class="form-group">
-                  <fieldset class="form-group">
-                    <label for="end_date">End Date</label>
-                    <div class="input-group">
-                      <span class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                      </span>
-                    <input type="text" class="form-control"  name="end_date" />
-                    </div>
-                  </fieldset>
-                </div>
+                </div> --}}
                 <fieldset class="form-group">
                   <label for="user_id">Assigned To</label>
                   <select id="select2-1" class="form-control select2-single" name="user">
@@ -84,14 +82,28 @@
                     @endif
                   </select>
                 </fieldset>
+                <div class="form-group">
+                  <fieldset class="form-group">
+                    <label for="end_date">End Date</label>
+                    <div class="input-group">
+                      <span class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </span>
+                    <input type="text" class="form-control"  name="end_date" value="{{ old('end_date') }}"/>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" class="form-control" id="description" cols="10" rows="2" name="description">
+                    {{ old('description') }}
+                  </textarea>
+                </div>
               </div>
               <!-- /. row -->
             </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea name="description" class="form-control" id="description" cols="10" rows="3" name="description"></textarea>
-            </div>
-            <div class="row">
+
+            {{-- <div class="row">
               <div class="col-sm-6">
                 <fieldset class="form-group">
                   <label>Company</label>
@@ -102,7 +114,7 @@
                       @endforeach
                     @endif
                   </select>
-                </fieldset>
+                </fieldset> --}}
 
                 {{-- <fieldset class="form-group">
                   <label>Task</label>
@@ -115,8 +127,8 @@
                   </select>
                 </fieldset> --}}
                 <!-- /.col-sm-6-->
-              </div>
-              <div class="col-sm-6">
+              {{-- </div> --}}
+              {{-- <div class="col-sm-6"> --}}
                 {{-- <fieldset class="form-group">
                   <label>Deal</label>
                   <select id="select2-2" class="form-control select2-single" name="deal">
@@ -127,7 +139,7 @@
                     @endif
                   </select>
                 </fieldset> --}}
-                <fieldset class="form-group">
+                {{-- <fieldset class="form-group">
                   <label>Participants (Contacts)</label>
                   <select id="select2-6" class="form-control select2-multiple" multiple="" name="participants[]">
                     @if($contacts->count() > 0)
@@ -136,14 +148,14 @@
                       @endforeach
                     @endif
                   </select>
-                </fieldset>
-              </div>
+                </fieldset> --}}
+              {{-- </div> --}}
               <!-- /. row -->
-            </div>
+            {{-- </div> --}}
             <div class="form-actions">
-              <button type="button" class="btn btn-secondary">
+              <button type="button" class="btn btn-secondary" onclick="window.history.back()">
                 <i class="fa fa-times"></i>
-                Discard
+                Cancel
               </button>
               <button type="submit" class="btn btn-primary">
                 <i class="fa fa-check"></i>

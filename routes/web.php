@@ -37,6 +37,7 @@ Route::group(
         Route::resource('documents', 'DocumentController');
         Route::resource('paychecks', 'PaycheckController');
         Route::resource('notes', 'NoteController');
+        Route::get('agents{agent}/dashboard', 'AgentController@dashboard')->name('agents.dashboard');
         }
 );
 

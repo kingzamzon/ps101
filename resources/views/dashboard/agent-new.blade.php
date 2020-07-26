@@ -25,29 +25,38 @@
           <i class="icon-note"></i> Create new Agent
         </div>
         <div class="card-body">
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
           <form method="POST" action="{{ route('agents.store') }}" id="addJournalForm">
             @csrf
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="first_name">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your First Name" required>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter your First Name" value="{{ old('first_name') }}" required>
               </div>
               <div class="form-group">
                 <label for="company_name">Company Name</label>
-                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter your Company Name" required>
+                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter your Company Name" value="{{ old('company_name') }}" required>
               </div>
               <div class="form-group">
                 <label for="tel">Cell phone</label>
-                <input type="tel" class="form-control" id="tel" name="tel" placeholder="Enter your Cell Number" required>
+                <input type="tel" class="form-control" id="tel" name="tel" placeholder="Enter your Cell Number" value="{{ old('tel') }}" required>
               </div>
               <div class="form-group">
                 <label for="tin">Social Security / TIN Number</label>
-                <input type="text" class="form-control" id="tin" name="tin" placeholder="Enter Social Security / TIN Number " required>
+                <input type="text" class="form-control" id="tin" name="tin" placeholder="Enter Social Security / TIN Number " value="{{ old('tin') }}" required>
               </div>
               <div class="form-group">
                 <label for="email">Login Email</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Username" required>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter Username" value="{{ old('email') }}" required>
               </div>
               <div class="form-group">
                 <label for="agent_no">Agent Number</label>
@@ -58,23 +67,44 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" value="{{ old('last_name') }}" required>
               </div>
+
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="city">City</label>
+                      <input type="text" id="city" class="form-control" placeholder="City" name="city" value="{{ old('city') }}">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="state">State</label>
+                      <input type="text" id="state" class="form-control" placeholder="State" name="state" value="{{ old('state') }}">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="zip_code">Zip Code</label>
+                      <input type="text" id="zip_code" class="form-control" placeholder="Zip Code" name="zip_code" value="{{ old('zip_code') }}">
+                    </div>
+                  </div>
+                </div>              
               <div class="form-group">
-                <label for="address">Mailing Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Mailing Address" required>
+                <label for="mail_address">Mailing Address</label>
+                <input type="text" class="form-control" id="mail_address" name="mail_address" placeholder="Mailing Address" value="{{ old('mail_address') }}" required>
               </div>
               <div class="form-group">
                 <label for="home_no">Home Number</label>
-                <input type="tel" class="form-control" id="home_no" name="home_no" placeholder="Enter your Home Number"required>
-              </div>
-              <div class="form-group">
-                <label for="dob">Date Of Birth</label>
-                <input type="Date" class="form-control" id="dob" name="dob" required>
+                <input type="tel" class="form-control" id="home_no" name="home_no" placeholder="Enter your Home Number" value="{{ old('home_no') }}">
               </div>
               <div class="form-group">
                 <label for="password">Login Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
+              </div>
+              <div class="form-group">
+                <label for="dob">Date Of Birth</label>
+                <input type="Date" class="form-control" id="dob" name="dob" value="{{ old('dob') }}" required>
               </div>
               <!-- col-sm-6  -->
             </div>
@@ -84,28 +114,28 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="bank_name">Bank Name</label>
-                <input type="text" class="form-control" id="bank_name" name="bank_name" placeholder="Bank Name" required>
+                <input type="text" class="form-control" id="bank_name" name="bank_name" placeholder="Bank Name" value="{{ old('bank_name') }}" required>
               </div>
               <div class="form-group">
                 <label for="account_name">Account Name</label>
-                <input type="text" class="form-control" id="account_name" name="account_name" placeholder="Account Name" required>
+                <input type="text" class="form-control" id="account_name" name="account_name" placeholder="Account Name" value="{{ old('account_name') }}" required>
               </div>
               <!-- /.col-sm-6-->
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="account_no">Account Number</label>
-                <input type="text" class="form-control" id="account_no" name="account_no" placeholder="Account Number" required>
+                <input type="text" class="form-control" id="account_no" name="account_no" placeholder="Account Number" value="{{ old('account_no') }}" required>
               </div>
               <div class="form-group">
                 <label for="routing_no">Routing Number</label>
-                <input type="text" class="form-control" id="routing_no" name="routing_no" placeholder="Routing Number" required>
+                <input type="text" class="form-control" id="routing_no" name="routing_no" placeholder="Routing Number" value="{{ old('routing_no') }}" required>
               </div>
               <!-- col-sm-6  -->
             </div>
           </div>
           <div class="form-actions">
-            <button type="button" class="btn btn-secondary" onclick="goBack()">
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">
               <i class="fa fa-times"></i>
               Cancel
             </button>
@@ -122,9 +152,6 @@
   <!-- /.conainer-fluid -->
 </main>
 <script>
-  function goBack(){
-    window.history.back();
-  }
   $(document).ready( function() {
 
   $.ajaxSetup({

@@ -39,10 +39,10 @@
                     <div class="col-md-3"> <b>Full Name</b></div>
                     <div class="col-md-9">{{$agent->user->name}}</div>
                   </div>
-                  <div class="row">
+                  {{-- <div class="row">
                     <div class="col-md-3"> <b>Username</b></div>
                     <div class="col-md-9">{{$agent->user->username}}</div>
-                  </div>
+                  </div> --}}
                   <div class="row">
                     <div class="col-md-3"> <b>Date Of Birth</b></div>
                     <div class="col-md-9">{{$agent->user->date_of_birth}}</div>
@@ -65,7 +65,36 @@
                   </div>
                   <div class="row">
                     <div class="col-md-3"> <b>Mailing Address</b></div>
-                    <div class="col-md-9">{{$agent->address}}</div>
+                    <div class="col-md-9">{{$agent->mail_address}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>City</b></div>
+                    <div class="col-md-9">{{$agent->address->city}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>State</b></div>
+                    <div class="col-md-9">{{$agent->address->state}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>Zip Code</b></div>
+                    <div class="col-md-9">{{$agent->address->zip_code}}</div>
+                  </div>
+                  <b>Direct Deposit Information</b>
+                  <div class="row">
+                    <div class="col-md-3"> <b>Bank Name</b></div>
+                    <div class="col-md-9">{{$directDepositInfo->bank_name}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>Account Name</b></div>
+                    <div class="col-md-9">{{$directDepositInfo->account_name}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>Account Number</b></div>
+                    <div class="col-md-9">{{$directDepositInfo->account_no}}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3"> <b>Routing Number</b></div>
+                    <div class="col-md-9">{{ $directDepositInfo->routing_no}}</div>
                   </div>
                   <div class="row">
                     <div class="col-md-3"> <b>Created At</b></div>
@@ -77,7 +106,7 @@
 
 
             <div class="col-md-6">
-              <div class="card">
+              {{-- <div class="card">
                 <div class="card-header">
                   <i class="fa fa-pencil-square-o"></i> Blog
                 </div>
@@ -101,11 +130,11 @@
                     <p>No Blog.</p>
                   @endif
                 </div>
-              </div>
+              </div> --}}
 
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-bandcamp"></i> Events
+                  <i class="fa fa-bandcamp"></i> Calendar
                 </div>
                 <div class="card-body">
                   @if($events->count() > 0)

@@ -16,18 +16,17 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('category');
+            $table->enum('category', ['Important', 'Opportunity', 'Optional', 'Crital', 'Meeting', 'Social', 'Time Off', 'Private'])->nullable();
+            $table->unsignedBigInteger('created_by')->nullable(); 
             $table->unsignedBigInteger('user_id')->nullable(); //assign_to
-            $table->unsignedBigInteger('company_id')->nullable();
-            $table->string('participants')->foreign()->default('[]');
             $table->string('start_date');
             $table->string('end_date');
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

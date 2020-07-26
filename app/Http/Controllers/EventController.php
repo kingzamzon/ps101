@@ -38,11 +38,11 @@ class EventController extends Controller
      */
     public function create()
     {
-        $contacts = Contact::orderBy('full_name','asc')->get();
-        $companys = Company::orderBy('name','asc')->get();
+        // $contacts = Contact::orderBy('full_name','asc')->get();
+        // $companys = Company::orderBy('name','asc')->get();
         $users = Agent::orderBy('id','asc')->get();
 
-        return view('dashboard.event-new', compact('contacts', 'companys', 'users'));
+        return view('dashboard.event-new', compact('users'));
     }
 
     /**
@@ -56,24 +56,19 @@ class EventController extends Controller
 
         $rules = [
             'title' => 'required|string',
-            'category' => 'required',
-            'tags' => 'required',
+            'category' => 'required|string',
+            'start_date' => 'required|string',
+            'end_date' => 'required|string'
         ];
 
         $this->validate($request, $rules);
 
-        if($request->has('participants')){
-            $participants = json_encode($request->participants);
-        }else {
-            $participants = '[]';
-        }
 
         $data = [
             'title' => $request->title,
             'category' => $request->category,
+            'created_by' => auth()->user()->id,
             'user_id' => $request->user,
-            'company_id' => $request->company,
-            'participants' => $participants,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'description' => $request->description
@@ -81,7 +76,7 @@ class EventController extends Controller
 
         $event = Event::create($data);
         $success = "Event Created";
-        return redirect( route('events.show', ['event' => $event->id]) )->with(['data' => $success]);
+        return redirect( route('calendar.index') )->with(['data' => $success]);
     }
 
     /**

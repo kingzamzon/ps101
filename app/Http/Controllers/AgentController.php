@@ -6,6 +6,7 @@ use App\Agent;
 use App\User;
 use App\Note;
 use App\Event;
+use App\Paycheck;
 use App\DirectDepositInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -55,6 +56,15 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|string|unique:users',
+            'password' => 'required|string'
+        ];
+
+        $this->validate($request, $rules);
+
         $username = User::username($request->email);
         $user = User::create([
             'name' => $request->first_name.' '.$request->last_name,
@@ -66,7 +76,17 @@ class AgentController extends Controller
         ]);
 
         $data = $request->all();
+
+        $address = (object) [   
+            "city" => $request->city, 
+            "state" => $request->state,
+            "zip_code" => $request->zip_code,
+            "country" => "United States",
+        ];
+        $address =  json_encode($address);
+
         $data['user_id'] = $user->id;
+        $data['address'] = $address;
         $agent = $this->_agent->create($data);
 
         // # Create Direct Deposit Information
@@ -107,10 +127,29 @@ class AgentController extends Controller
      */
     public function show(Agent $agent)
     {
+
         $notes = Note::orderBy('id','desc')->where('agent_id', $agent->id )->take(5)->get();
         $events = Event::orderBy('id','desc')->where('user_id', $agent->user_id )->take(5)->get();
+        $directDepositInfo = DirectDepositInfo::where('user_id', $agent->user_id)->first();
+        $agent['address'] = json_decode($agent->address);
 
-        return view('dashboard.agent-view', compact('agent', 'notes', 'events'));
+        return view('dashboard.agent-view', compact('agent', 'notes', 'events', 'directDepositInfo'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Agent  $agent
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard(Agent $agent)
+    {
+        $directDepositInfo = DirectDepositInfo::where('user_id', $agent->user_id)->first();
+        $notes = Note::orderBy('id','desc')->paginate(15);
+        $paychecks = Paycheck::orderBy('id','desc')->where('agent_id', $agent->id )->take(10)->get();
+        $agent['address'] = json_decode($agent->address);
+
+        return view('dashboard.agent-dashboard', compact('agent', 'notes', 'paychecks', 'directDepositInfo'));
     }
 
     /**
@@ -121,7 +160,9 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-        return view('dashboard.agent-edit', compact('agent'));
+        $agent['address'] = json_decode($agent->address);
+        $directDepositInfo = DirectDepositInfo::where('user_id', $agent->user_id)->first();
+        return view('dashboard.agent-edit', compact('agent', 'directDepositInfo'));
     }
 
     /**
@@ -142,9 +183,17 @@ class AgentController extends Controller
         $user->date_of_birth = $request->dob;
         $user->save();
 
-        $agent = Agent::find($agent->id);
-        $agent->tel = $request->tel;
-        $agent->save();
+        $address = (object) [   
+            "city" => $request->city, 
+            "state" => $request->state,
+            "zip_code" => $request->zip_code,
+            "country" => "United States",
+        ];
+        $address =  json_encode($address);
+
+        $data = $request->all();
+        $data['address'] = $address;
+        $data = $this->_agent->updateAgent($data);
 
         $success = "Agent Updated";
 

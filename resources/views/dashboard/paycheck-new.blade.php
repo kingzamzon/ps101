@@ -25,6 +25,15 @@
           <i class="icon-note"></i> New Paycheck
         </div>
         <div class="card-body">
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
           <form method="POST" action="{{ route('paychecks.store') }}" id="addJournalForm">
             @csrf
             <div class="form-group">
@@ -40,7 +49,7 @@
                   </select>
                 </div>
                 <div class="form-group col-sm-6">
-                  <label for="company_id">Company Name</label>
+                  <label for="company_id">Propspect Name</label>
                   <select id="select2-5" class="form-control select2-single" name="company_id">
                     @if($companys->count() > 0)
                       @foreach($companys as $company)
@@ -94,9 +103,9 @@
               </div>
             </div>
             <div class="form-actions">
-              <button type="button" class="btn btn-secondary">
+              <button type="button" class="btn btn-secondary" onclick="window.history.back()">
                 <i class="fa fa-times"></i>
-                Discard
+                Cancel
               </button>
               <button type="submit" class="btn btn-primary">
                 <i class="fa fa-check"></i>

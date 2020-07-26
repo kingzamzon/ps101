@@ -147,7 +147,24 @@
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Mailing Address</b></div>
-                <div class="col-md-9">{{Auth::user()->agent->address}}</div>
+                <div class="col-md-9">{{Auth::user()->agent->mail_address}}</div>
+              </div>
+              <b>Direct Deposit Information</b>
+              <div class="row">
+                <div class="col-md-3"> <b>Bank Name</b></div>
+                <div class="col-md-9">{{Auth::user()->directDepositInfo->bank_name}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"> <b>Account Name</b></div>
+                <div class="col-md-9">{{Auth::user()->directDepositInfo->account_name}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"> <b>Account Number</b></div>
+                <div class="col-md-9">{{Auth::user()->directDepositInfo->account_no}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"> <b>Routing Number</b></div>
+                <div class="col-md-9">{{ Auth::user()->directDepositInfo->routing_no}}</div>
               </div>
               <div class="row">
                 <div class="col-md-3"> <b>Created At</b></div>
