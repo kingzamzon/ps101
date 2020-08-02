@@ -22,7 +22,7 @@ $(function () {
         timePicker: true,
         startDate: moment().startOf("hour"),
         locale: {
-            format: "MM-DD-Y",
+            format: "MM-DD-Y hh:mmm A",
         },
     });
 

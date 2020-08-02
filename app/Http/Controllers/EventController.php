@@ -58,7 +58,7 @@ class EventController extends Controller
             'title' => 'required|string',
             'category' => 'required|string',
             'start_date' => 'required|string',
-            'end_date' => 'required|string'
+            'length' => 'required|string'
         ];
 
         $this->validate($request, $rules);
@@ -70,7 +70,7 @@ class EventController extends Controller
             'created_by' => auth()->user()->id,
             'user_id' => $request->user,
             'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
+            'length' => $request->length,
             'description' => $request->description
         ];
 

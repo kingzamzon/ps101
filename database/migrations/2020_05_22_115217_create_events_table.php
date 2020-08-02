@@ -20,7 +20,7 @@ class CreateEventsTable extends Migration
             $table->unsignedBigInteger('created_by')->nullable(); 
             $table->unsignedBigInteger('user_id')->nullable(); //assign_to
             $table->string('start_date');
-            $table->string('end_date');
+            $table->string('length');
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();

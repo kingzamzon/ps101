@@ -13,12 +13,12 @@ class Event extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'category', 'created_by', 'user_id', 'start_date', 'end_date', 'description'
+        'title', 'category', 'created_by', 'user_id', 'start_date', 'length', 'description'
     ];
 
 
     protected $appends = [
-        'new_start_date', 'new_end_date'
+        'new_start_date'
     ];
 
     /**
@@ -27,20 +27,20 @@ class Event extends Model
     public function getNewStartDateAttribute()
     {
         $format_date = explode('-', $this->start_date);
-        $year_format = $format_date[2];
+        $year_format = explode(' ', $format_date[2])[0];
         $month_format = $format_date[0];
         $day_format = $format_date[1];
         return "{$year_format}-{$month_format}-{$day_format}";
     }
 
-    public function getNewEndDateAttribute()
-    {
-        $format_date = explode('-', $this->end_date);
-        $year_format = $format_date[2];
-        $month_format = $format_date[0];
-        $day_format = $format_date[1];
-        return "{$year_format}-{$month_format}-{$day_format}";
-    }
+    // public function getNewEndDateAttribute()
+    // {
+    //     $format_date = explode('-', $this->end_date);
+    //     $year_format = $format_date[2];
+    //     $month_format = $format_date[0];
+    //     $day_format = $format_date[1];
+    //     return "{$year_format}-{$month_format}-{$day_format}";
+    // }
 
     public function getParticipantsAttribute($participants)
     {

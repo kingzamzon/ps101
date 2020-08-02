@@ -39,8 +39,8 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="title">Title</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter your name" name="title" value="{{ old('title') }}">
+                  <label for="title">Event name</label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter Event name" name="title" value="{{ old('title') }}">
                 </div>
                 <fieldset class="form-group">
                   <label for="start_date">Start Date</label>
@@ -53,7 +53,7 @@
                 </fieldset>
                 <div class="form-group">
                   <label for="category">Category</label>
-                  <select id="select1" class="form-control" name="category">
+                  <select id="select2-1" class="form-control" name="category">
                     <option>Important</option>
                     <option>Opportunity</option>
                     <option>Optional</option>
@@ -73,7 +73,7 @@
                 </div> --}}
                 <fieldset class="form-group">
                   <label for="user_id">Assigned To</label>
-                  <select id="select2-1" class="form-control select2-single" name="user">
+                  <select id="select2-4" class="form-control select2-single" name="user">
                     <option value="">All Agents</option>
                     @if($users->count() > 0)
                       @foreach($users as $user)
@@ -83,15 +83,15 @@
                   </select>
                 </fieldset>
                 <div class="form-group">
-                  <fieldset class="form-group">
-                    <label for="end_date">End Date</label>
-                    <div class="input-group">
-                      <span class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                      </span>
-                    <input type="text" class="form-control"  name="end_date" value="{{ old('end_date') }}"/>
-                    </div>
-                  </fieldset>
+                  <label for="length">Event Length</label>
+                  <select id="select2-5" class="form-control" name="length">
+                    <option>10 mins</option>
+                    <option>30 mins</option>
+                    <option>60 mins</option>
+                    <option>90 mins</option>
+                    <option>120 mins</option>
+                    <option>Longer than 120 mins</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="description">Description</label>
