@@ -18,6 +18,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <a class="btn" href="{{ route('events-catgeories.index') }}"><i class="icon-layers"></i> &nbsp;Categories</a>
         <a class="btn" href="{{ route('events.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
       </div>
     </li>
@@ -30,6 +31,7 @@
           <i class="icon-calendar"></i> Calendar
 
           <div style="float:right;" class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn btn-secondary btn-sm mr-3" href="{{ route('events-catgeories.index') }}"><i class="icon-layers"></i> &nbsp;Catgories</a>
             <a class="btn btn-primary btn-sm" href="{{ route('events.create') }}"><i class="fa fa-edit"></i> &nbsp;New</a>
           </div>
         </div>

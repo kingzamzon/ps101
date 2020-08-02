@@ -35,6 +35,7 @@ Route::group(
         Route::resource('contacts', 'ContactController');
         Route::resource('calendar', 'CalendarController');
         Route::resource('events', 'EventController');
+        Route::resource('events-catgeories', 'EventCategoryController');
         Route::resource('documents', 'DocumentController');
         Route::resource('paychecks', 'PaycheckController');
         Route::resource('notes', 'NoteController');

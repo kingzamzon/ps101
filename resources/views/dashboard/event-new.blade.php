@@ -62,6 +62,11 @@
                     <option>Social</option>
                     <option>Time Off</option>
                     <option>Private</option>
+                    @if($categories->count() > 0)
+                      @foreach($categories as $category)
+                        <option value="{{ $category }}">{{ $category }}</option>
+                      @endforeach
+                    @endif
                   </select>
                 </div>
                 <!-- /.col-sm-6-->

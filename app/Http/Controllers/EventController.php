@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-use App\Contact;
 use App\Company;
 use App\User;
+use App\EventCategory;
 use App\Agent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,10 +39,10 @@ class EventController extends Controller
     public function create()
     {
         // $contacts = Contact::orderBy('full_name','asc')->get();
-        // $companys = Company::orderBy('name','asc')->get();
+        $categories = EventCategory::orderBy('name','asc')->pluck('name');
         $users = Agent::orderBy('id','asc')->get();
 
-        return view('dashboard.event-new', compact('users'));
+        return view('dashboard.event-new', compact('users', 'categories'));
     }
 
     /**
