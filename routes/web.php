@@ -19,8 +19,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tt/{email}', function ($email) {
         // correct format 2020-07-20 2020-07-02
-        // $format_date = explode('-', '07-02-2020');
-        // $year_format = $format_date[2];
+        // $format_date = explode('-', '08-02-2020 06:000 AM');
+        // $year_format = explode(' ', $format_date[2])[0];
+        // return $year_format;
         // $month_format = $format_date[0];
         // $day_format = $format_date[1];
         // return "{$year_format}-{$month_format}-{$day_format}";
